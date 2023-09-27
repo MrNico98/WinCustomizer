@@ -27,4 +27,4 @@ Remove-Item -Path "WinCustomizerGUI-main" -Recurse -Force
 Remove-Item -Path "WinCustomizerGUI-main.zip" -Force
 
 
-Start-Process -FilePath ".\WinCustomizer\Start.bat"
+Start-Process -FilePath ".\WinCustomizerGUI\Start.bat"
