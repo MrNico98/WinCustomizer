@@ -8,5 +8,4 @@ reg add HKCU\Console /v QuickEdit /t REG_DWORD /d 0 /f
 
 powershell.exe -ExecutionPolicy Bypass -Command "Set-MpPreference -ExclusionPath 'C:\Users\%USERNAME%\Desktop\WinCustomizerGUI', 'C:\Users\%USERNAME%\Desktop\MrNico98Debloat3.0.exe'"
 
-
-powerShell -ExecutionPolicy Bypass -File "C:\Users\%USERNAME%\Desktop\WinCustomizerGUI\WinCustomizerGUI.exe"
+"WinCustomizerGUI.exe"
