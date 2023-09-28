@@ -3,7 +3,7 @@ Add-Type -AssemblyName System.Windows.Forms
 
 $ErrorActionPreference           = "SilentlyContinue"
 
-    write-host("Disabling Telemetry...")
+write-host("Disabling Telemetry...")
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
@@ -253,7 +253,7 @@ $ErrorActionPreference           = "SilentlyContinue"
         #"SmsRouter" # Microsoft Windows SMS Router Service
         #"smphost" # Microsoft Storage Spaces SMP
         #"NgcCtnrSvc" # Microsoft Passport Container
-        #"MsKeyboardFilter" # Microsoft Keyboard Filter ... thanks (.AtomRadar treasury Ã¢â„¢â€º#8267) for report. 
+        #"MsKeyboardFilter" # Microsoft Keyboard Filter ... thanks (.AtomRadar treasury ÃƒÂ¢Ã¢â€žÂ¢Ã¢â‚¬Âº#8267) for report. 
         #"cloudidsvc" # Microsoft Cloud Identity Service
         #"wlidsvc" # Microsoft Account Sign-in Assistant
         "*diagnosticshub*" # Microsoft (R) Diagnostics Hub Standard Collector Service
@@ -371,13 +371,7 @@ $ErrorActionPreference           = "SilentlyContinue"
     write-host("Disabling Bing Search in Start Menu...")
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Type DWord -Value 0
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "CortanaConsent" -Type DWord -Value 0
-    If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) {
-        New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Force | Out-Null
-    }
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "DisableWebSearch" -Type DWord -Value 1
-    write-host("Stopping and disabling Windows Search indexing service...")
-    Stop-Service "WSearch" -WarningAction SilentlyContinue
-    Set-Service "WSearch" -StartupType Disabled
+    
     write-host("Hiding Taskbar Search icon / box...")
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Type DWord -Value 0
     write-host("Disabling Cortana...")
@@ -394,11 +388,7 @@ $ErrorActionPreference           = "SilentlyContinue"
         New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -Force | Out-Null
     }
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -Name "HarvestContacts" -Type DWord -Value 0
-    If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) {
-        New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Force | Out-Null
-    }
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name "AllowCortana" -Type DWord -Value 0
-    Stop-Process -Name SearchApp -Force
+        
     Stop-Process -Name explorer -Force
     write-host("Disabled Cortana")
 
@@ -467,17 +457,17 @@ $ErrorActionPreference           = "SilentlyContinue"
     foreach($Bloat in $BloatwareList){
         if((Get-AppxPackage -Name $Bloat).NonRemovable -eq $false)
         {
-            write-host("Trying to remove $Bloat")
+            Log("Trying to remove $Bloat")
             Try {
                 Get-AppxPackage -Name $Bloat | Remove-AppxPackage -ErrorAction Stop | Out-Null
                 Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online -ErrorAction Stop
             }
             Catch {
-                write-host("Failed to remove $Bloat, exception : $($_)")
+                Error('Failed to remove $Bloat, exception : $($_)')
             }
             
         }  
     }
-    write-host("Bloatware is removed.")
+    write-host "FATTO"
 
     Shutdown /r
