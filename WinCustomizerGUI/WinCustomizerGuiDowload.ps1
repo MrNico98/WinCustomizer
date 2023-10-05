@@ -8,9 +8,6 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 cd "$env:USERPROFILE\Desktop"
 Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
 
-
-cd "$env:USERPROFILE\Desktop"
-
 # Download the script from GitHub
 Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizer/archive/refs/heads/main.zip" -OutFile "WinCustomizerGUI-main.zip"
 
