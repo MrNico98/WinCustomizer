@@ -5,10 +5,8 @@
       <Language ID="en-us" />
       <ExcludeApp ID="Lync" />
       <ExcludeApp ID="Teams" />
-      <ExcludeApp ID="Access" />
       <ExcludeApp ID="OneDrive" />
       <ExcludeApp ID="OneNote" />
-      <ExcludeApp ID="Outlook" />
       <ExcludeApp ID="Publisher" />
     </Product>
   </Add>
