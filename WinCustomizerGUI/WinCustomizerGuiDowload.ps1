@@ -1,6 +1,6 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Output "WinCustomizerGUI necessita di essere lanciato come Amministratore. Riavvio."
-    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm -Uri https://bit.ly/wincustomizer | iex"
+    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm -Uri https://bit.ly/wincustomizergui | iex"
     break
 }
 
@@ -12,7 +12,7 @@ Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
 cd "$env:USERPROFILE\Desktop"
 
 # Download the script from GitHub
-Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizer/archive/refs/heads/main.zip" -OutFile "WinCustomizerGUI-main.zip"
+Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizerGUI/archive/refs/heads/main.zip" -OutFile "WinCustomizerGUI-main.zip"
 
 
 Expand-Archive -Path "WinCustomizerGUI-main.zip" -DestinationPath "." -Force
