@@ -4,9 +4,10 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     break
 }
 
+Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
+
 # Change to the desktop directory
 cd "$env:USERPROFILE\Desktop"
-Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
 
 # Download the script from GitHub
 Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizerGUI/archive/refs/heads/main.zip" -OutFile "WinCustomizerGUI-main.zip"
