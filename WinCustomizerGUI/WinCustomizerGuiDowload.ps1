@@ -4,11 +4,9 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     break
 }
 
-# Change to the desktop directory
-cd "$env:USERPROFILE\Desktop"
 Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
 
-
+# Change to the desktop directory
 cd "$env:USERPROFILE\Desktop"
 
 # Download the script from GitHub
