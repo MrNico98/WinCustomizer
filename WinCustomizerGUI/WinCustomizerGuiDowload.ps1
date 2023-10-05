@@ -1,6 +1,6 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Output "WinCustomizerGUI necessita di essere lanciato come Amministratore. Riavvio."
-    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm -Uri https://raw.githubusercontent.com/MrNico98/WinCustomizerGUI/main/WinCustomizerGUI/WinCustomizerGuiDowload.ps1 | iex"
+    Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "irm -Uri https://bit.ly/wincustomizergui | iex"
     break
 }
 
