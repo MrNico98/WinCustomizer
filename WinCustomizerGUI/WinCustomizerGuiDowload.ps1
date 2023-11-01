@@ -8,6 +8,7 @@ Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
 
 # Change to the desktop directory
 cd "$env:USERPROFILE\Desktop"
+if (Test-Path -Path "$env:USERPROFILE\Desktop"-PathType Leaf) {cd "$env:USERPROFILE\OneDrive\Desktop"}
 
 # Download the script from GitHub
 Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizerGUI/archive/refs/heads/main.zip" -OutFile "WinCustomizerGUI-main.zip"
