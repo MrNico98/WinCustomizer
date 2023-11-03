@@ -4,7 +4,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     break
 }
 
-Remove-Item -Path "$env:USERPROFILE\Desktop\WinCustomizerGUI" -Recurse -Force
+Remove-Item -Path "$env:USERPROFILE\Desktop\WinCustomizerGUI" -Recurse -Force |out-null
 if (Test-Path -Path "$env:USERPROFILE\Desktop\WinCustomizerGUI"-PathType Leaf) {cd "$env:USERPROFILE\OneDrive\Desktop\WinCustomizerGUI"}
 
 Set-MpPreference -ExclusionPath $env:USERPROFILE\Desktop\WinCustomizerGUI-main
