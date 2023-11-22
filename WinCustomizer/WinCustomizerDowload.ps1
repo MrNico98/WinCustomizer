@@ -18,7 +18,7 @@ Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizer/archive/refs/h
 Expand-Archive -Path "WinCustomizer-main.zip" -DestinationPath "." -Force
 
 
-Move-Item -Path "WinCustomizer-main\WinCustomizerGUI" -Destination "WinCustomizer" -Force
+Move-Item -Path "WinCustomizer-main\WinCustomizer" -Destination "WinCustomizer" -Force
 
 
 Remove-Item -Path "WinCustomizer-main" -Recurse -Force
