@@ -12,7 +12,7 @@ cd "$env:USERPROFILE\Desktop"
 if (Test-Path -Path "$env:USERPROFILE\Desktop"-PathType Leaf) {cd "$env:USERPROFILE\OneDrive\Desktop"}
 
 # Download the script from GitHub
-Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizer/archive/refs/heads/main.zip" -OutFile "WinCustomizer-main.zip"
+Invoke-WebRequest -Uri "https://github.com/MrNico98/WinCustomizer/archive/refs/heads/main.zip -OutFile "WinCustomizer-main.zip"
 
 
 Expand-Archive -Path "WinCustomizer-main.zip" -DestinationPath "." -Force
