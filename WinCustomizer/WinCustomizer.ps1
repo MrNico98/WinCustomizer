@@ -1841,7 +1841,8 @@ $WPFsottosistema.Add_Click({
 
     $wsadownload.Add_Click({
      Log('Avvio abilitazione WSA')
-      
+     Start-Process "https://graph.org/Guida-Installazione-WSA-10-03"
+
      systeminfo | find "Windows 11"
      if ($?) {Write-Host "11"
      $os=11}
