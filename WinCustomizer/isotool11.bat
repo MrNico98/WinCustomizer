@@ -199,7 +199,6 @@ IF %errorlevel% equ 0 (
   color 4 && echo "ERRORE: Impossibile copiare unattend.xml!" && pause && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
 )
 
-
 reg load HKLM\TK_COMPONENTS "C:\mount\mount\Windows\System32\config\COMPONENTS"
 reg load HKLM\TK_DEFAULT "C:\mount\mount\Windows\System32\config\default" 
 reg load HKLM\TK_NTUSER "C:\mount\mount\Users\Default\ntuser.dat"
@@ -235,7 +234,6 @@ dism /mount-image /imagefile:"C:\ISO\WinISO\sources\boot.wim" /index:2 /mountdir
   move "C:\ISO\WinISO\sources\appraiserres.dll" "C:\ISO\WinISO\sources\appraiserres.dll.bak"
   dism /unmount-image /mountdir:"C:\mount\boot" /commit
 cls
-
 goto :menuprincipale
 
 :stock
@@ -247,7 +245,6 @@ IF %errorlevel% equ 0 (
 ) ELSE (
   color 4 && echo "ERRORE: Impossibile copiare unattend.xml!" && pause && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
 )
-
 goto :menuprincipale
 
 cls
