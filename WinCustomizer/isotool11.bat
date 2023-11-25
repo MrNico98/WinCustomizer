@@ -7,6 +7,13 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 
 title WinCustomizer Debloat ISO 11
 
+for %%# in (%_args%) do (if /i "%%#"=="-qedit" set quedit=1)
+reg query HKCU\Console /v QuickEdit %nul2% | find /i "0x0" %nul1% || if not defined quedit (
+reg add HKCU\Console /v QuickEdit /t REG_DWORD /d "0" /f %nul1%
+start cmd.exe /c ""!_batf!" %_args% -qedit"
+exit /b
+)
+
 cls
 echo ==================PULIZIA DISM=============
 echo Ora eseguiro' una pulizia rimani in attesa
