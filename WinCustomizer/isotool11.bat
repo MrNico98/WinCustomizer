@@ -359,11 +359,11 @@ IF %errorlevel% equ 0 (
 )
 
 rem copy attivatore
-copy "Risorse\WinCustomizerAttivatore.ps1" "C:\mount\mount\Windows"
+copy "Risorse\WinCustomizerAttivatore.bat" "C:\mount\mount\Windows"
 IF %errorlevel% equ 0 (
-  powerShell -Command "Write-Host 'WinCustomizerAttivatore.ps1 copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
+  powerShell -Command "Write-Host 'WinCustomizerAttivatore.bat copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
 ) ELSE (
-  color 4 && echo "Impossibile copiare WinCustomizerAttivatore.ps1!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
+  color 4 && echo "Impossibile copiare WinCustomizerAttivatore.bat!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
 )
 
 rem copy main
