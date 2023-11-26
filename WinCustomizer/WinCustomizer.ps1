@@ -2041,11 +2041,12 @@ $WPFoff.Add_Click({
 
     $office1964.Add_Click({
     Log('OFFICE 2021 x64 personalizzato')
+    $dek=[Environment]::GetFolderPath("Desktop")
 # Prompt the user for Office application choices
 $word = Read-Host "Vuoi l'app OFFICE WORD? [1] Si [2] No"
 if ($word -eq "1") {$word=""} elseif ($word -eq "2") {$word="Word"}
 
-$excel = Read-Host "Vuoi l'app OFFICE EXCEL? [1] No [2] No"
+$excel = Read-Host "Vuoi l'app OFFICE EXCEL? [1] Si [2] No"
 if ($excel -eq "1") {$excel=""} elseif ($excel -eq "2") {$excel="Excel"}
 
 $acces = Read-Host "Vuoi l'app OFFICE ACCESS? [1] Si [2] No"
@@ -2085,7 +2086,7 @@ $configXML = @"
 "@
 
 # Save the configuration to a file
-$configXML | Out-File -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x64-complete.xml" -Encoding UTF8
+$configXML | Out-File -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
 
 # Prompt the user for Visio and Project choices
 $visio = Read-Host "Vuoi Visio? [1] SI [2] NO"
@@ -2095,7 +2096,7 @@ if ($visio -eq "1") {
   <Language ID="it-it" />
   <ExcludeApp ID="Lync" />
 </Product>
-"@ | Out-File -Append -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x64-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
 }
 
 $project = Read-Host "Vuoi Project? [1] SI [2] NO"
@@ -2114,7 +2115,7 @@ if ($project -eq "1") {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x64-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
 }
 else {
     @"
@@ -2127,7 +2128,7 @@ else {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x64-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
 }
 
 Start-Sleep 4
@@ -2155,28 +2156,22 @@ True('FATTO')
 
     $office1932.Add_Click({
     Log('Avvio download OFFICE 2021 x32 completo')
-
+    $dek=[Environment]::GetFolderPath("Desktop")
     # Prompt the user for Office application choices
 $word = Read-Host "Vuoi l'app OFFICE WORD? [1] Si [2] No"
 if ($word -eq "1") {$word=""} elseif ($word -eq "2") {$word="Word"}
-$excel = Read-Host "Vuoi l'app OFFICE EXCEL? [1] No [2] No"
+$excel = Read-Host "Vuoi l'app OFFICE EXCEL? [1] Si [2] No"
 if ($excel -eq "1") {$excel=""} elseif ($excel -eq "2") {$excel="Excel"}
-
 $acces = Read-Host "Vuoi l'app OFFICE ACCESS? [1] Si [2] No"
 if ($acces -eq "1") {$acces=""} elseif ($acces -eq "2") {$acces="Access"}
-
 $onedrive = Read-Host "Vuoi l'app OFFICE ONEDRIVE? [1] Si [2] No"
 if ($onedrive -eq "1") {$onedrive=""} elseif ($onedrive -eq "2") {$onedrive="OneDrive"}
-
 $OneNote = Read-Host "Vuoi l'app OFFICE ONENOTE? [1] Si [2] No"
 if ($OneNote -eq "1") {$OneNote=""} elseif ($onedrive -eq "2") {$OneNote="OneNote"}
-
 $outlook = Read-Host "Vuoi l'app OFFICE OUTLOOK? [1] Si [2] No"
 if ($outlook -eq "1") {$outlook=""} elseif ($outlook -eq "2") {$outlook="Outlook"}
-
 $powerpoint = Read-Host "Vuoi l'app OFFICE POWERPOINT? [1] Si [2] No"
 if ($powerpoint -eq "1") {$powerpoint=""} elseif ($powerpoint -eq "2") {$powerpoint="PowerPoint"}
-
 $publisher = Read-Host "Vuoi l'app OFFICE PUBLISHER? [1] Si [2] No"
 if ($publisher -eq "1") {$publisher=""} elseif ($publisher -eq "2") {$onedrive="Publisher"}
 
@@ -2199,7 +2194,7 @@ $configXML = @"
 "@
 
 # Save the configuration to a file
-$configXML | Out-File -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x32-complete.xml" -Encoding UTF8
+$configXML | Out-File -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
 
 # Prompt the user for Visio and Project choices
 $visio = Read-Host "Vuoi Visio? [1] SI [2] NO"
@@ -2209,7 +2204,7 @@ if ($visio -eq "1") {
   <Language ID="it-it" />
   <ExcludeApp ID="Lync" />
 </Product>
-"@ | Out-File -Append -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x32-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
 }
 
 $project = Read-Host "Vuoi Project? [1] SI [2] NO"
@@ -2228,7 +2223,7 @@ if ($project -eq "1") {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x32-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
 }
 else {
     @"
@@ -2241,7 +2236,7 @@ else {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "C:\Users\$env:USERNAME\Desktop\configuration-x32-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
 }
 
 start-sleep 4
