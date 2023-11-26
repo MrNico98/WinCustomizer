@@ -2041,7 +2041,7 @@ $WPFoff.Add_Click({
 
     $office1964.Add_Click({
     Log('OFFICE 2021 x64 personalizzato')
-    $dek=[Environment]::GetFolderPath("Desktop")
+    
 # Prompt the user for Office application choices
 $word = Read-Host "Vuoi l'app OFFICE WORD? [1] Si [2] No"
 if ($word -eq "1") {$word=""} elseif ($word -eq "2") {$word="Word"}
@@ -2086,7 +2086,7 @@ $configXML = @"
 "@
 
 # Save the configuration to a file
-$configXML | Out-File -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
+$configXML | Out-File -FilePath "C:\configuration-x64-complete.xml" -Encoding UTF8
 
 # Prompt the user for Visio and Project choices
 $visio = Read-Host "Vuoi Visio? [1] SI [2] NO"
@@ -2096,7 +2096,7 @@ if ($visio -eq "1") {
   <Language ID="it-it" />
   <ExcludeApp ID="Lync" />
 </Product>
-"@ | Out-File -Append -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "C:\configuration-x64-complete.xml" -Encoding UTF8
 }
 
 $project = Read-Host "Vuoi Project? [1] SI [2] NO"
@@ -2115,7 +2115,7 @@ if ($project -eq "1") {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "C:\configuration-x64-complete.xml" -Encoding UTF8
 }
 else {
     @"
@@ -2128,7 +2128,7 @@ else {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "$dek\configuration-x64-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "C:\configuration-x64-complete.xml" -Encoding UTF8
 }
 
 Start-Sleep 4
@@ -2139,7 +2139,7 @@ Move-Item -Path "Office2021-main\Office2021" -Destination "Office2021" -Force
 Remove-Item -Path "Office2021-main" -Recurse -Force
 Remove-Item -Path "Office2021-main.zip" -Recurse -Force
 mkdir "$currentPath\Office2021\configuration"
-Move-Item -Path "$env:USERPROFILE\Desktop\configuration-x64-complete.xml" -Destination "$currentPath\Office2021\configuration" -Force
+Move-Item -Path "C:\configuration-x64-complete.xml" -Destination "$currentPath\Office2021\configuration" -Force
 Start-Process -FilePath ".\Office2021\Install-x64-complete.bat" -Wait
 Remove-Item -Path "$currentPath\Office2021" -Recurse -Force
 True('FATTO')
@@ -2156,7 +2156,7 @@ True('FATTO')
 
     $office1932.Add_Click({
     Log('Avvio download OFFICE 2021 x32 completo')
-    $dek=[Environment]::GetFolderPath("Desktop")
+    
     # Prompt the user for Office application choices
 $word = Read-Host "Vuoi l'app OFFICE WORD? [1] Si [2] No"
 if ($word -eq "1") {$word=""} elseif ($word -eq "2") {$word="Word"}
@@ -2194,7 +2194,7 @@ $configXML = @"
 "@
 
 # Save the configuration to a file
-$configXML | Out-File -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
+$configXML | Out-File -FilePath "C:\configuration-x32-complete.xml" -Encoding UTF8
 
 # Prompt the user for Visio and Project choices
 $visio = Read-Host "Vuoi Visio? [1] SI [2] NO"
@@ -2204,7 +2204,7 @@ if ($visio -eq "1") {
   <Language ID="it-it" />
   <ExcludeApp ID="Lync" />
 </Product>
-"@ | Out-File -Append -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "C:\configuration-x32-complete.xml" -Encoding UTF8
 }
 
 $project = Read-Host "Vuoi Project? [1] SI [2] NO"
@@ -2223,7 +2223,7 @@ if ($project -eq "1") {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "C:\configuration-x32-complete.xml" -Encoding UTF8
 }
 else {
     @"
@@ -2236,7 +2236,7 @@ else {
 <Updates Enabled="TRUE" />
 <RemoveMSI />
 </Configuration>
-"@ | Out-File -Append -FilePath "$dek\configuration-x32-complete.xml" -Encoding UTF8
+"@ | Out-File -Append -FilePath "C:\configuration-x32-complete.xml" -Encoding UTF8
 }
 
 start-sleep 4
@@ -2248,7 +2248,7 @@ Move-Item -Path "Office2021-main\Office2021" -Destination "Office2021" -Force
 Remove-Item -Path "Office2021-main" -Recurse -Force
 Remove-Item -Path "Office2021-main.zip" -Recurse -Force
 mkdir "$currentPath\Office2021\configuration"
-Move-Item -Path "$currentPath\configuration-x32-complete.xml" -Destination "$currentPath\Office2021\configuration" -Force
+Move-Item -Path "C:\configuration-x32-complete.xml" -Destination "$currentPath\Office2021\configuration" -Force
 Start-Process -FilePath ".\Office2021\Install-x32-complete.bat" -Wait
 Remove-Item -Path "$currentPath\Office2021" -Recurse -Force
 True('FATTO')
