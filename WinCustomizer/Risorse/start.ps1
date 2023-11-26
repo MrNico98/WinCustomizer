@@ -61,4 +61,4 @@ Disable-UserInput
 Start-Sleep -Seconds 30 | Out-Null
 
 # Start exe
-Start-Process -FilePath "C:\Windows\tweaks.bat" -Wait
+Start-Process -FilePath "C:\Windows\tweaks.bat"
