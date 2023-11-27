@@ -115,5 +115,5 @@ del "%appdata%\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"2>nul
 
 :skip_edge
 
-powerShell -ExecutionPolicy Bypass -File C:\Windows\main.ps1
+powerShell -ExecutionPolicy Bypass -File C:\Windows\main.ps1 -wait
 timeout 7
