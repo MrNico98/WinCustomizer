@@ -7,6 +7,7 @@ GOODBYE TOOL CLOSED SOURCE, WELCOME OPEN SOURCE
 
 # Per Scaricarlo
 Win+R, digitare Powershell e scrivere:
+
 Irm -Uri "https://bit.ly/WinCustomizer" | iex
 
 # Tool ISO
