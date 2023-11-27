@@ -5,6 +5,10 @@ WinCustomizer si presenta come una risorsa essenziale per chi cerca una personal
 
 GOODBYE TOOL CLOSED SOURCE, WELCOME OPEN SOURCE
 
+# Per Scaricarlo
+Win+R, digitare Powershell e scrivere:
+Irm -Uri "https://bit.ly/WinCustomizer" | iex
+
 # Tool ISO
 Ti consente di creare delle versioni personalizzate di Windows allegerite tramite il processo di debloat
 
