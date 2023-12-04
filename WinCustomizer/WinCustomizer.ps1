@@ -52,32 +52,34 @@ $inputXML = @"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wincustomizer"
         mc:Ignorable="d"
-        Title="WinCustomizer" Height="472" Width="430" AllowDrop="True">
-    <Grid Background="#FF96FF83" Height="462" VerticalAlignment="Top">
+        Title="WinCustomizer" Height="378" Width="430" AllowDrop="True">
+    <Grid Background="#FF96FF83" Height="361" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="Tool ISO" Name="tooliso" Margin="145,45,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image Name="ISO" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/immagine-iso.png" Margin="142,41,0,0" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="46" Height="42" VerticalAlignment="Top"/>
-        <Button Content="Tips Windows" Name="tips" Margin="145,93,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image Name="TipsWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Tips.png" Margin="132,89,0,0" RenderTransformOrigin="-0.288,1.552" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="58" Height="51" VerticalAlignment="Top"/>
-        <Button Content="Attiva WSA" Name="sottosistema" Height="35" Margin="145,143,125,0" VerticalAlignment="Top" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True"/>
-        <Image x:Name="AttivaWSA" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/WSA.png" Margin="148,146,0,0" RenderTransformOrigin="-0.288,1.552" Height="30" Width="40" ScrollViewer.CanContentScroll="False" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Button Content="Edizione Windows" Name="cambiowindows" Margin="145,191,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="EdizioneWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/cambioedizione.png" Margin="133,191,0,0" RenderTransformOrigin="-0.288,1.552" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="33" Height="35" VerticalAlignment="Top"/>
-        <Button Content="Attiva Windows" Name="attivawin" Margin="145,239,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="AttivaWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/maxresdefault.png" Margin="146,243,0,0" RenderTransformOrigin="-0.288,1.552" Width="30" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
-        <Button Content="Office" Name="off" Margin="145,287,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="Office" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/office.png" Margin="145,290,0,0" RenderTransformOrigin="0.5,0.5" Width="29" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Ver.: 4.7" HorizontalAlignment="Left" Height="30" Margin="368,410,0,0" VerticalAlignment="Top" Width="62"/>
-        <Label Content="Developer: MrNico98" HorizontalAlignment="Left" Height="30" Margin="0,410,0,0" VerticalAlignment="Top" Width="133"/>
-        <Button Content="App Debloat" x:Name="deb" Margin="145,335,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,335,0,0"/>
-        <Button Content="Copilot" x:Name="cop" Margin="145,383,125,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="imcopilot" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/1698851956_microsoft-copilot_story.jpg" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,385,0,0"/>
+        <Button Content="Tool ISO" Name="tooliso" Margin="37,45,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image Name="ISO" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/immagine-iso.png" Margin="34,41,0,0" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="46" Height="42" VerticalAlignment="Top"/>
+        <Button Content="Tips Windows" Name="tips" Margin="37,93,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image Name="TipsWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Tips.png" Margin="24,89,0,0" RenderTransformOrigin="-0.288,1.552" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="58" Height="51" VerticalAlignment="Top"/>
+        <Button Content="Attiva WSA" Name="sottosistema" Height="35" Margin="235,45,35,0" VerticalAlignment="Top" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True"/>
+        <Image x:Name="AttivaWSA" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/WSA.png" Margin="239,48,0,0" RenderTransformOrigin="-0.288,1.552" Height="30" Width="40" ScrollViewer.CanContentScroll="False" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button Content="Edizione Windows" Name="cambiowindows" Margin="235,93,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image x:Name="EdizioneWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/cambioedizione.png" Margin="220,93,0,0" RenderTransformOrigin="-0.288,1.552" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="34" Height="35" VerticalAlignment="Top"/>
+        <Button Content="Attiva Windows" Name="attivawin" Margin="235,150,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image x:Name="AttivaWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/maxresdefault.png" Margin="236,154,0,0" RenderTransformOrigin="-0.288,1.552" Width="30" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
+        <Button Content="Office" Name="off" Margin="235,198,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image x:Name="Office" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/office.png" Margin="235,201,0,0" RenderTransformOrigin="0.5,0.5" Width="29" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Ver.: 4.7" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Content="Developer: MrNico98" HorizontalAlignment="Left" Height="30" Margin="2,320,0,0" VerticalAlignment="Top" Width="133"/>
+        <Button Content="App Debloat" x:Name="deb" Margin="37,148,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,148,0,0"/>
+        <Button Content="Copilot" x:Name="cop" Margin="37,196,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Image x:Name="imcopilot" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/1698851956_microsoft-copilot_story.jpg" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,198,0,0"/>
+        <Button Content="WSL" x:Name="wsl" Margin="129,254,141,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="34" VerticalAlignment="Top"/>
+        <Image x:Name="windoswub" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/wsl.png" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="129,256,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="30" Margin="129,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Jokerman" FontSize="22" FontWeight="Bold"><Run Language="it-it" Text="WinCustomizer"/></TextBlock>
     </Grid>
 </Window>
@@ -2287,4 +2289,102 @@ $WPFcop.Add_Click({
  Error('Programma non presente')} else {True('FATTO')}
  })
   
+$WPFwsl.Add_Click({
+    Log('Avvio WSL')
+       Write-Host "Wsl install"
+       wsl --install
+       write-host 
+       Clear-Host
+       Write-host "Windows Subsystem for linux"
+       dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+       Write-Host
+       Write-Host "Virtual Machine platform"
+       dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+       wsl --set-default-version 2
+       Write-Host "Wsl installed"
+       Start-Sleep -Seconds 2 > $null
+       Clear-Host
+       
+           Write-Host   $install
+           write-host 
+           Write-Host " [*] 1. Ubuntu                [*] 2. Debian" -ForegroundColor Red
+           Write-Host " [*] 3. Kali Linux            [*] 4. Opensuse " -ForegroundColor Blue
+           Write-Host " [*] 5. Oracle                [*] 6. Everything " -ForegroundColor Magenta
+           Write-Host " [*] 7. Exit " -ForegroundColor Green
+           Write-Host
+           $opt = Read-Host "Digita un numero, poi premi invio"
+   
+           switch ($opt) {
+               1 {
+                   Write-Host
+                   Write-Host "Ubuntu"
+                   wsl --install -d Ubuntu
+                   Write-Host
+                   Write-Host "Ubuntu Installed" -ForegroundColor Yellow
+                   write-host 
+                   Start-Sleep -Seconds 2 > $null
+                   break
+               }
+                2 {Write-Host "Debian"
+               wsl --install -d Debian
+               Write-Host
+               Write-Host "Debian Installed" -ForegroundColor Red
+               Write-Host
+               break
+                }
+                3 {Write-Host "Kali"
+                wsl --install -d kali-linux 
+                Write-Host "Kali Linux Installed" -ForegroundColor Blue
+                Write-Host
+                break
+                 }
+                  4 {Write-Host "Opensuse"
+                  wsl --install -d opensuse-leap-15.5 
+                  Write-Host
+                  Write-Host "OpenSuse Installed" -ForegroundColor Green
+                  Write-Host
+                  break
+                   }
+                   5 {Write-Host "Oracle"
+                   wsl --install -d oraclelinux_9_1
+                   Write-Host
+                   Write-Host "Oracle Installed" -ForegroundColor Green
+                   Write-Host
+                   break
+                    }
+                    6 {Write-Host "Everything"
+                  wsl --install -d ubuntu
+                  wsl --install -d Debian
+                  wsl --install -d kali-linux
+                  wsl --install -d opensuse-leap-15.5
+                  wsl --install -d oraclelinux_9_1
+                   Write-Host
+                   Start-Sleep 2 > $null
+                   Clear-Host
+                  Write-Host "Everything Installed" -ForegroundColor Blue
+                  Write-Host
+                  break
+                   }
+                   7 {
+                   Write-Host "Exit"
+                   true "Fatto, necessito riavvio, riavvio tra 15 secondi"
+                   shutdown /r /t 15
+                   Start-Sleep -Seconds 1 > $null
+                   exit
+                   break
+               }
+               default {
+                   Write-Host "Invaled Option."
+               }
+           }
+       
+   
+       else {
+           
+            dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+            dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+            wsl --set-default-version 2
+       }
+    })
+
 $Form.ShowDialog() | out-null
