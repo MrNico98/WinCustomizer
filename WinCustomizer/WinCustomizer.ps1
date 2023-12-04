@@ -2291,6 +2291,8 @@ $WPFcop.Add_Click({
   
 $WPFwsl.Add_Click({
     Log('Avvio WSL')
+    Log('Avvio Copilot Windows')
+    if($true){
        Write-Host "Wsl install"
        wsl --install
        write-host 
@@ -2305,12 +2307,13 @@ $WPFwsl.Add_Click({
        Start-Sleep -Seconds 2 > $null
        Clear-Host
        
-           Write-Host   $install
+   
+           Write-Host $install
            write-host 
            Write-Host " [*] 1. Ubuntu                [*] 2. Debian" -ForegroundColor Red
            Write-Host " [*] 3. Kali Linux            [*] 4. Opensuse " -ForegroundColor Blue
-           Write-Host " [*] 5. Oracle                [*] 6. Everything " -ForegroundColor Magenta
-           Write-Host " [*] 7. Exit " -ForegroundColor Green
+           Write-Host " [*] 5. Oracle                [*] 6. Tutto " -ForegroundColor Magenta
+           Write-Host " [*] 7. Esci " -ForegroundColor Green
            Write-Host
            $opt = Read-Host "Digita un numero, poi premi invio"
    
@@ -2367,7 +2370,7 @@ $WPFwsl.Add_Click({
                    }
                    7 {
                    Write-Host "Exit"
-                   true "Fatto, necessito riavvio, riavvio tra 15 secondi"
+                   True "Necessito Riavvio, riavvio tra 15 secondi"
                    shutdown /r /t 15
                    Start-Sleep -Seconds 1 > $null
                    exit
@@ -2377,7 +2380,8 @@ $WPFwsl.Add_Click({
                    Write-Host "Invaled Option."
                }
            }
-       
+       } while ($opt -ne "6") {
+       }
    
        else {
            
