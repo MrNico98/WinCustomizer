@@ -72,14 +72,14 @@ $inputXML = @"
         <Image x:Name="AttivaWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/maxresdefault.png" Margin="236,154,0,0" RenderTransformOrigin="-0.288,1.552" Width="30" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
         <Button Content="Office" Name="off" Margin="235,198,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="Office" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/office.png" Margin="235,201,0,0" RenderTransformOrigin="0.5,0.5" Width="29" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Ver.: 4.7" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Content="Ver.: 4.8" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
         <Label Content="Developer: MrNico98" HorizontalAlignment="Left" Height="30" Margin="2,320,0,0" VerticalAlignment="Top" Width="133"/>
         <Button Content="App Debloat" x:Name="deb" Margin="37,148,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,148,0,0"/>
         <Button Content="Copilot" x:Name="cop" Margin="37,196,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="imcopilot" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/1698851956_microsoft-copilot_story.jpg" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,198,0,0"/>
         <Button Content="WSL" x:Name="wsl" Margin="129,254,141,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="34" VerticalAlignment="Top"/>
-        <Image x:Name="windoswub" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/wsl.png" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="129,256,0,0"/>
+        <Image x:Name="windoswub" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/wsl.png" RenderTransformOrigin="0.5,0.5" Width="45" Height="42" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="129,256,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="30" Margin="129,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Jokerman" FontSize="22" FontWeight="Bold"><Run Language="it-it" Text="WinCustomizer"/></TextBlock>
     </Grid>
 </Window>
@@ -1632,13 +1632,13 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     
     $velointernet.Add_Click({
     Log('Avvio settaggio migliore per Internet')
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters /v IRPStackSize /t REG_DWORD /d 50 /f >NUL
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters /v SizReqBuf /t REG_DWORD /d 17424 /f >NUL
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v DefaultTTL /t REG_DWORD /d 62 /f >NUL
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v TCP1323Opts /t REG_DWORD /d 1 /f >NUL
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v MaxFreeTcbs /t REG_DWORD /d 65536 /f >NUL
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v MaxUserPort /t REG_DWORD /d 65534 /f >NUL
-    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v GlobalMaxTcpWindowSize /t REG_DWORD /d 65535 /f >NUL
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters /v IRPStackSize /t REG_DWORD /d 50 /f
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters /v SizReqBuf /t REG_DWORD /d 17424 /f
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v DefaultTTL /t REG_DWORD /d 62 /f
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v TCP1323Opts /t REG_DWORD /d 1 /f
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v MaxFreeTcbs /t REG_DWORD /d 65536 /f
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v MaxUserPort /t REG_DWORD /d 65534 /f
+    cmd.exe /c reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v GlobalMaxTcpWindowSize /t REG_DWORD /d 65535 /f
     Write-Host "1-Change DNS"
     $adapterName = (Get-NetAdapter | Where-Object { $_.Name -like "Ethernet*" -or $_.Name -like "Wi-Fi*" }).Name
     Write-Host "Adapter $adapterName"
@@ -2292,6 +2292,8 @@ $WPFcop.Add_Click({
 $WPFwsl.Add_Click({
     Log('Avvio WSL')
     powerShell -ExecutionPolicy Bypass -File "Risorse\WinCustomizerWSL.ps1"
+    if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerWSL.ps1" -PathType Leaf)) {
+        Error('Programma non presente')} else {True('FATTO')}
     })
 
 $Form.ShowDialog() | out-null
