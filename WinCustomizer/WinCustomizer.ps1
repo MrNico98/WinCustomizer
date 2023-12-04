@@ -1485,17 +1485,8 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     systeminfo | find "Windows 10"
      if ($?) {Error "Funzione abilitata solo per Windows 11"}
      else {
-    New-ItemProperty -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Type String -Value "" -Force
+    cmd.exe /c reg add “HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32” /f /ve
     Stop-Process -Name explorer -Force
-    Stop-Process -Name smartscreen -Force
-    Stop-Process -Name SecurityHealthSystray -Force
-    Stop-Process -Name SecurityHealthHost -Force
-    Stop-Process -Name SecurityHealthService -Force
-    Stop-Process -Name SecurityHealthHost -Force
-    Stop-Process -Name DWWIN -Force
-    Stop-Process -Name CompatTelRunner -Force
-    Stop-Process -Name GameBarPresenceWriter -Force
-    Stop-Process -Name DeviceCensus -Force
     Start-Process explorer
     True('FATTO')
     }
@@ -1515,17 +1506,8 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
      if ($?) {Error "Funzione abilitata solo per Windows 11"}
      else {
     Log('Ripristino il tasto destro del mouse')
-    cmd.exe /c reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
+    cmd.exe /c reg delete "HKCU\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
     Stop-Process -Name explorer -Force
-    Stop-Process -Name smartscreen -Force
-    Stop-Process -Name SecurityHealthSystray -Force
-    Stop-Process -Name SecurityHealthHost -Force
-    Stop-Process -Name SecurityHealthService -Force
-    Stop-Process -Name SecurityHealthHost -Force
-    Stop-Process -Name DWWIN -Force
-    Stop-Process -Name CompatTelRunner -Force
-    Stop-Process -Name GameBarPresenceWriter -Force
-    Stop-Process -Name DeviceCensus -Force
     Start-Process explorer
     True('FATTO')
     }
@@ -1926,14 +1908,15 @@ $WPFsottosistema.Add_Click({
 
     $abilpacman.Add_Click({
     Log('Avvio attivazione PacMan')
-    $pacmanmedio="$currentPath\Risorse\WSAPacMan"
-    $pacmanfine="$env:USERPROFILE\Desktop"
-
-    mkdir "Risorse\WSAPacMan"
-    
-    Expand-Archive "Risorse\WSA-pacman-v1.5.0-portable.zip" "Risorse\WSAPacMan"
-    Move-Item -path $pacmanmedio -Destination $pacmanfine -Force
-    Start-Process -FilePath "$env:USERPROFILE\Desktop\WSAPacMan\WSA-pacman.exe"
+    $dek=[Environment]::GetFolderPath("Desktop")
+    cd $dek
+    Invoke-WebRequest -Uri "https://github.com/MrNico98/pacman/archive/refs/heads/main.zip" -OutFile "pacman-main.zip"
+    Expand-Archive -Path "pacman-main.zip" -DestinationPath "." -Force
+    Move-Item -Path "pacman-main\WSA-pacman-v1.5.0-portable" -Destination "WSA-pacman-v1.5.0-portable" -Force
+    Remove-Item -Path "pacman-main" -Recurse -Forc
+    Remove-Item -Path "pacman-main.zip" -Force
+    Rename-Item -Path "$dek\WSA-pacman-v1.5.0-portable" -NewName "PacManWSA"
+    Start-Process -FilePath "$dek\PacManWSA\WSA-pacman.exe"
     True('FATTO')
     })
 

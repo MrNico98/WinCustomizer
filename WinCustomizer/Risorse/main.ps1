@@ -472,6 +472,6 @@ $ErrorActionPreference           = "SilentlyContinue"
             
         }  
     }
-    write-host("Finito. Riavvio il PC attendi.")
+    write-host("Finito. Riavvio il PC tra 20 secondi, attendi.")
 
-    Shutdown /r
+    shutdown /r /t 20
