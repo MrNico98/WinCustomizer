@@ -2291,7 +2291,7 @@ $WPFcop.Add_Click({
   
 $WPFwsl.Add_Click({
     Log('Avvio WSL')
-    powerShell -ExecutionPolicy Bypass -File "Risorse\WinCustomizerWSL.ps1"
+    Start-Process powershell.exe -ArgumentList "-NoExit", "-File", "Risorse\WinCustomizerWSL.ps1"
     if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerWSL.ps1" -PathType Leaf)) {
         Error('Programma non presente')} else {True('FATTO')}
     })
