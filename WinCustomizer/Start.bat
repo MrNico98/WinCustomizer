@@ -6,4 +6,4 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 :: Disable QuickEdit Mode
 reg add HKCU\Console /v QuickEdit /t REG_DWORD /d 0 /f
 
-powerShell -ExecutionPolicy Bypass -File "WinCustomizer.ps1"
+start powershell.exe -NoExit -ExecutionPolicy Bypass -File "WinCustomizer.ps1"
