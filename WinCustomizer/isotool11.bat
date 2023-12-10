@@ -290,7 +290,7 @@ rem delete edge
 :edge
 cls
 echo > C:\mount\mount\Windows\noedge.pref
-copy "Risorse\OperaGXSetup.exe" "C:\mount\mount"
+copy "Risorse\OperaGXSetup.exe" "C:\mount\mount\Windows"
 IF %errorlevel% equ 0 (
   powerShell -Command "Write-Host 'Installer di OperaGXSetup.exe copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
 ) ELSE (
