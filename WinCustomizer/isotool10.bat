@@ -294,6 +294,22 @@ IF %errorlevel% equ 0 (
   color 4 && echo "Impossibile copiare WinCustomizerAttivatore.bat!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
 )
 
+rem copy fixatt
+copy "Risorse\testfix.ps1" "C:\mount\mount\Windows"
+IF %errorlevel% equ 0 (
+  powerShell -Command "Write-Host 'testfix.ps1 copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
+) ELSE (
+  color 4 && echo "Impossibile copiare testfix.ps1!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
+)
+
+rem copy reg
+copy "Risorse\lower-ram-usage.reg" "C:\mount\mount\Windows"
+IF %errorlevel% equ 0 (
+  powerShell -Command "Write-Host 'lower-ram-usage.reg copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
+) ELSE (
+  color 4 && echo "Impossibile copiare lower-ram-usage.reg!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
+)
+
 rem copy main
 copy "Risorse\main.ps1" "C:\mount\mount\Windows"
 IF %errorlevel% equ 0 (

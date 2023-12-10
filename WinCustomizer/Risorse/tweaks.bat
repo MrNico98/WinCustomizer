@@ -53,8 +53,15 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SilentInstalledAppsEnabled /t REG_DWORD /d 0 /f
 reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent /v DisableWindowsConsumerFeatures /t REG_DWORD /d 1 /f
 
+taskkill /F /IM SearchUI.exe
+move "%windir%\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy" "%windir%\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy.bak"
+
 rem fix indexing was turned off
 sc config wsearch start=auto
+
+echo Applying registry changes...
+regedit /s "C:\windows\lower-ram-usage.reg.reg"
+echo Registry changes applied successfully.
 
 rem disable telemetry
 sc config DiagTrack start=disabled
@@ -114,6 +121,4 @@ del "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"2>n
 del "%appdata%\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"2>nul
 
 :skip_edge
-
-powerShell -ExecutionPolicy Bypass -File C:\Windows\main.ps1 -wait
 timeout 7
