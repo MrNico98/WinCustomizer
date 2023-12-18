@@ -7,12 +7,14 @@ cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &&
 
 title WinCustomizer Debloat ISO 10
 
-for %%# in (%_args%) do (if /i "%%#"=="-qedit" set quedit=1)
-reg query HKCU\Console /v QuickEdit %nul2% | find /i "0x0" %nul1% || if not defined quedit (
-reg add HKCU\Console /v QuickEdit /t REG_DWORD /d "0" /f %nul1%
-start cmd.exe /c ""!_batf!" %_args% -qedit"
-exit /b
-)
+if exist "%TEMP%\consoleSettingsBackup.reg" regedit /S "%TEMP%\consoleSettingsBackup.reg"&DEL /F /Q "%TEMP%\consoleSettingsBackup.reg"&goto :mainstart
+regedit /S /e "%TEMP%\consoleSettingsBackup.reg" "HKEY_CURRENT_USER\Console"
+echo REGEDIT4>"%TEMP%\disablequickedit.reg"
+echo [HKEY_CURRENT_USER\Console]>>"%TEMP%\disablequickedit.reg"
+(echo "QuickEdit"=dword:00000000)>>"%TEMP%\disablequickedit.reg"
+regedit /S "%TEMP%\disablequickedit.reg"
+DEL /F /Q "%TEMP%\disablequickedit.reg"
+start "" "cmd" /c "%~dpnx0"&exit
 
 cls
 echo =================PULIZIA DISM==============
