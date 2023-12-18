@@ -241,6 +241,7 @@ dism /mount-image /imagefile:"C:\ISO\WinISO\sources\boot.wim" /index:2 /mountdir
 	Reg add "HKLM\TK_BOOT_SYSTEM\Setup\LabConfig" /v "BypassTPMCheck" /t REG_DWORD /d "1" /f 
 	Reg unload "HKLM\TK_BOOT_SYSTEM" 
   move "C:\ISO\WinISO\sources\appraiserres.dll" "C:\ISO\WinISO\sources\appraiserres.dll.bak"
+  del "C:\ISO\WinISO\sources\appraiserres.dll"
   dism /unmount-image /mountdir:"C:\mount\boot" /commit
 cls
 goto :menuprincipale
