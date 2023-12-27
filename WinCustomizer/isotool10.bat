@@ -16,6 +16,7 @@ regedit /S "%TEMP%\disablequickedit.reg"
 DEL /F /Q "%TEMP%\disablequickedit.reg"
 start "" "cmd" /c "%~dpnx0"&exit
 
+:mainstart
 cls
 echo =================PULIZIA DISM==============
 echo Ora eseguiro' una pulizia rimani in attesa
