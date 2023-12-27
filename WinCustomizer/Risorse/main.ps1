@@ -93,8 +93,6 @@ $ErrorActionPreference           = "SilentlyContinue"
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1
     write-host("Hiding 3D Objects icon from This PC...")
     Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Recurse -ErrorAction SilentlyContinue
-    #Network Tweaks (Most of the tweaks were provided to me by emilwojcik93) | https://github.com/emilwojcik93/sc-cmd#introduction
-	#Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "IRPStackSize" -Type DWord -Value 20 # Causes problems with Mapped Drives and File Sharing Programs!
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "SizReqBuf" -Type DWord -Value 17424
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name DefaultTTL -Value 64
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" -Name TCP1323Opts -Value 1
@@ -168,10 +166,6 @@ $ErrorActionPreference           = "SilentlyContinue"
     }
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Maps" -Name "AutoDownloadAndUpdateMapData" -Type DWord -Value 0
 
-    # Disable Application Notifications / This might break some notifications like Windows Defender ones!
-    # Thanks Niecks#2591 for reporting
-    # Line to remove it : Remove-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "NoTileApplicationNotification" -Force | Out-Null
-
     if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings")){
         New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings" -Force | Out-Null
     }
@@ -209,68 +203,25 @@ $ErrorActionPreference           = "SilentlyContinue"
     write-host("Disabling some services and scheduled tasks")
 
     $Services = @(
-        #"*xbox*" # Xbox Services
-        #"*Xbl*" # Xbox Services
-        #"XboxNetApiSvc" # Xbox Services
-        #"LanmanWorkstation" # Causes problems with Mapped Drives and File Sharing Programs!
-        #"workfolderssvc" # Causes problems with Mapped Drives and File Sharing Programs!
-        #"WSearch" # Windows Search
-        #"PushToInstall" # Needed for Microsoft Store
-        #"icssvc" # Mobile Hotspot
         "MixedRealityOpenXRSvc" # Mixed Reality
         "WMPNetworkSvc" # Windows Media Player Sharing
         #"LicenseManager" # License Manager for Microsoft Store
         #"wisvc" # Insider Program
         "WerSvc" # write-host Reporting
-        #"WalletService" # Wallet Service
-        #"lmhosts" # TCP/IP NetBIOS Helper
+        "WalletService" # Wallet Service
         "SysMain" # SuperFetch - Safe to disable if you have a SSD
-        #"svsvc" # Spot Verifier
-        #"sppsvc" # Software Protection
         "SCPolicySvc" # Smart Card Removal Policy
         "ScDeviceEnum" # Smart Card Device Enumeration Service
         "SCardSvr" # Smart Card
-        #"LanmanServer" # Server # Causes problems with Mapped Drives and File Sharing Programs!
-        #"SensorService" # Sensor Service
         "RetailDemo" # Retail Demo Service
-        #"RemoteRegistry" # Remote Registry # Issue by V1ce
-        #"UmRdpService" # Remote Desktop Services UserMode Port Redirector # Issue by V1ce
-        #"TermService" # Remote Desktop Services # Issue by V1ce
-        #"SessionEnv" # Remote Desktop Configuration # Issue by V1ce
-        #"RasMan" # Remote Access Connection Manager # Issue by V1ce
-        #"RasAuto" # Remote Access Auto Connection Manager # Issue by V1ce
-        #"TroubleshootingSvc" # Recommended Troubleshooting Service
-        #"RmSvc" # Radio Management Service (Might be needed for laptops)
-        #"QWAVE" # Quality Windows Audio Video Experience
-        #"wercplsupport" # Problem Reports Control Panel Support
-        #"Spooler" # Print Spooler # Issue by V1ce
-        #"PrintNotify" # Printer Extensions and Notifications # Issue by V1ce
-        #"PhoneSvc" # Phone Service
-        #"SEMgrSvc" # Payments and NFC/SE Manager
         "WpcMonSvc" # Parental Controls
-        #"CscService" # Offline Files
-        #"InstallService" # Microsoft Store Install Service
-        #"SmsRouter" # Microsoft Windows SMS Router Service
-        #"smphost" # Microsoft Storage Spaces SMP
-        #"NgcCtnrSvc" # Microsoft Passport Container
-        #"MsKeyboardFilter" # Microsoft Keyboard Filter ... thanks (.AtomRadar treasury Ã¢â„¢â€º#8267) for report. 
-        #"cloudidsvc" # Microsoft Cloud Identity Service
-        #"wlidsvc" # Microsoft Account Sign-in Assistant
         "*diagnosticshub*" # Microsoft (R) Diagnostics Hub Standard Collector Service
-        #"iphlpsvc" # IP Helper - Might break some VPN Clients
-        #"lfsvc" # Geolocation Service # Issue by V1ce
-        #"fhsvc" # File History Service # Issue by V1ce
-        #"Fax" # Fax # Issue by V1ce
-        #"embeddedmode" # Embedded Mode
         "MapsBroker" # Downloaded Maps Manager
         "TrkWks" # Distributed Link Tracking Client
         "WdiSystemHost" # Diagnostic System Host
         "WdiServiceHost" # Diagnostic Service Host
         "DPS" # Diagnostic Policy Service
         "diagsvc" # Diagnostic Execution Service
-        #"DusmSvc" # Data Usage
-        #"VaultSvc" # Credential Manager
-        #"AppReadiness" # App Readiness
     )
 
     #Disable Services listed above

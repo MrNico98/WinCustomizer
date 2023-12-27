@@ -7,7 +7,6 @@ function Install-WinGet() {
 
     Push-Location $env:TEMP
 
-    # https://github.com/microsoft/winget-cli/issues/2230
     if (-not (Test-Path 'Microsoft.DesktopAppInstaller.msixbundle')) {
         Write-Information "`tMicrosoft.DesktopAppInstaller"
         Invoke-WebRequest 'https://aka.ms/getwinget' -OutFile 'Microsoft.DesktopAppInstaller.msixbundle' -UseBasicParsing

@@ -776,8 +776,6 @@ exit /b
 
 ::========================================================================================================================================
 
-::  https://github.com/Gamers-Against-Weed/Set-WindowsCbsEdition
-
 :cbsxml:[
 param (
     [Parameter()]
