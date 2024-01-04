@@ -1291,7 +1291,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $resetupdate.width            = 100
     $resetupdate.height           = 30
     $resetupdate.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
-    $ripristinoForm.Controls.AddRange($cleandefender)
+    $ripristinoForm.Controls.AddRange($resetupdate)
 
     $resetupdate.Add_Click({
     Log('Avvio pulizia cronologia Windows Defender')
