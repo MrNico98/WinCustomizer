@@ -72,13 +72,13 @@ $inputXML = @"
         <Image x:Name="AttivaWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/maxresdefault.png" Margin="236,154,0,0" RenderTransformOrigin="-0.288,1.552" Width="30" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
         <Button Content="Office" Name="off" Margin="235,198,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="Office" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/office.png" Margin="235,201,0,0" RenderTransformOrigin="0.5,0.5" Width="29" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Ver.: 4.9" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Content="Ver.: 5.0" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
         <Label Content="Developer: MrNico98" HorizontalAlignment="Left" Height="30" Margin="2,320,0,0" VerticalAlignment="Top" Width="133"/>
-        <Button Content="App Debloat" x:Name="deb" Margin="37,148,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
+        <Button Content="WinCustomizerTweakst" x:Name="deb" Margin="37,148,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,148,0,0"/>
         <Button Content="Copilot" x:Name="cop" Margin="37,196,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="imcopilot" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/1698851956_microsoft-copilot_story.jpg" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,198,0,0"/>
-        <Button Content="WSL" x:Name="wsl" Margin="129,254,141,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="34" VerticalAlignment="Top"/>
+        <Button Content="Attiva WSL" x:Name="wsl" Margin="129,254,141,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="34" VerticalAlignment="Top"/>
         <Image x:Name="windoswub" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/wsl.png" RenderTransformOrigin="0.5,0.5" Width="45" Height="42" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="129,256,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="30" Margin="129,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Jokerman" FontSize="22" FontWeight="Bold"><Run Language="it-it" Text="WinCustomizer"/></TextBlock>
     </Grid>
@@ -176,7 +176,7 @@ $WPFtooliso.Add_Click({
    })
 
 $WPFdeb.Add_Click({
-    Log('Avvio APP Debloat')
+    Log('Avvio WinCustomizerTweaks')
     powerShell -ExecutionPolicy Bypass -File "Risorse\WinCustomizerDebloat3.0.ps1"
     if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerDebloat3.0.ps1" -PathType Leaf)) {
     Error('Il programma non presente')} else {True('FATTO')}
@@ -1150,14 +1150,11 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
    $terzaForm.Controls.AddRange($ripristinopc) 
 
    $ripristinopc.Add_Click({
-   # 
     $ripristinoForm = New-Object System.Windows.Forms.Form
     $ripristinoForm.Text = "Ripristino PC"
     $ripristinoForm.StartPosition              = "CenterScreen"
     $ripristinoForm.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#ccccff")
-    $ripristinoForm.Size = New-Object System.Drawing.Size(1000, 240)
-
-     # Create a button on the second form
+    $ripristinoForm.Size = New-Object System.Drawing.Size(1000, 300)
     $sfcscan = New-Object System.Windows.Forms.Button
     $sfcscan.Text = "Ripristina System32 con SFC"
     $sfcscan.AutoSize                 = $True
@@ -1183,8 +1180,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $ripristinoForm.Controls.AddRange($dismscan)
 
     $dismscan.Add_Click({
-   Log('Ripristino Windows con DIS')
-    # Run the DISM checkhealth command
+   Log('Ripristino Windows con DISM')
     Start-Process -FilePath "dism.exe" -ArgumentList "/online /cleanup-image /checkhealth" -Wait
     Start-Process -FilePath "dism.exe" -ArgumentList "/online /cleanup-image /scanhealth" -Wait
     Start-Process -FilePath "dism.exe" -ArgumentList "/online /cleanup-image /RestoreHealth" -Wait
@@ -1205,7 +1201,6 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     Start-Process -FilePath "cipher.exe" -ArgumentList "/w:c" -Wait
     True('FATTO')
     })
-
 
     $chekdisk = New-Object System.Windows.Forms.Button
     $chekdisk.Text = "Controlla stato SSD/HDD"
@@ -1289,6 +1284,42 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     True('FATTO')
     })
 
+    $resetupdate = New-Object System.Windows.Forms.Button
+    $resetupdate.Text = "Resetta Windows Update"
+    $resetupdate.AutoSize                 = $True
+    $resetupdate.Location = New-Object System.Drawing.Point(70, 200)
+    $resetupdate.width            = 100
+    $resetupdate.height           = 30
+    $resetupdate.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $ripristinoForm.Controls.AddRange($cleandefender)
+
+    $resetupdate.Add_Click({
+    Log('Avvio pulizia cronologia Windows Defender')
+    Stop-Service -Name bits, wuauserv, cryptsvc
+    Remove-Item -Path "$env:SystemRoot\System32\Catroot2" -Force -Recurse
+    Start-Service -Name cryptsvc
+    Remove-Item -Path "$env:windir\WindowsUpdate.log" -Force
+    $system32Path = "$env:SystemRoot\System32"
+    $filesToRegister = @("atl.dll", "jscript.dll", "msxml3.dll", "softpub.dll", "wuapi.dll", "wuaueng.dll", "wuaueng1.dll", "wucltui.dll", "wups.dll", "wups2.dll", "wuweb.dll", "quartz.dll")
+    foreach ($file in $filesToRegister) {
+    $dllPath = Join-Path -Path $system32Path -ChildPath $file
+    if (Test-Path $dllPath) {
+        try {
+            regsvr32 /s $dllPath
+        } catch {
+            Write-Host "Failed to register: $dllPath"
+        }
+    } else {
+        Write-Host "DLL not found: $dllPath"
+    }
+ }
+    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate" -Name AccountDomainSid -Force
+    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate" -Name PingID -Force
+    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate" -Name SusClientId -Force
+    Start-Service -Name bits, wuauserv
+    True('FATTO')
+    })
+
     $savedriver = New-Object System.Windows.Forms.Button
     $savedriver.Text = "Salva i driver del PC"
     $savedriver.AutoSize                 = $True
@@ -1306,6 +1337,9 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $outputFilePath = Join-Path -Path $desktopPath -ChildPath '\driver.txt'
     driverquery > $outputFilePath
     warning('Trovi la cartella in C:\DriverPC')
+    New-Item -ItemType Directory -Path "C:\DriverPC\DriverDISM" | out-null
+    start-process -filepath "dism.exe" -ArgumentList "/online /export-driver /destination:C:\DriverPC\DriverDISM"
+    warning('Per ripristinare tutti i driver, salvati la cartella su usb e iso installata dai "pnputil /add-driver "percorsodriver\*.inf" /subdirs /install /reboot"')
     True('FATTO')
     })
 
@@ -1335,7 +1369,6 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     }
     })
 
-
     $tempfile = New-Object System.Windows.Forms.Button
     $tempfile.Text = "Elimina i file temporanei"
     $tempfile.AutoSize                 = $True
@@ -1349,6 +1382,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     Log('Avvio eliminazione file temporanei')
     cmd.exe /c del /s /f /q "%TEMP%\*.*"
 	cmd.exe /c del /s /f /q "%SYSTEMROOT%\Temp\*.*"
+    start-process -filepath "cleanmgr.exe" -ArgumentList "/verylowdisk" -Wait
     True('FATTO')
     })
 
