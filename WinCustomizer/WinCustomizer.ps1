@@ -1332,13 +1332,11 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $savedriver.Add_Click({
     Log('Inizio a salvare i driver del PC')
     New-Item -ItemType Directory -Path "C:\DriverPC" | out-null
-    Export-WindowsDriver -Online -Destination "C:\DriverPC"
+    start-process -filepath "dism.exe" -ArgumentList "/online /export-driver /destination:C:\DriverPC"
     $desktopPath = "C:\DriverPC"
     $outputFilePath = Join-Path -Path $desktopPath -ChildPath '\driver.txt'
     driverquery > $outputFilePath
     warning('Trovi la cartella in C:\DriverPC')
-    New-Item -ItemType Directory -Path "C:\DriverPC\DriverDISM" | out-null
-    start-process -filepath "dism.exe" -ArgumentList "/online /export-driver /destination:C:\DriverPC\DriverDISM"
     warning('Per ripristinare tutti i driver, salvati la cartella su usb e iso installata dai "pnputil /add-driver "percorsodriver\*.inf" /subdirs /install /reboot"')
     True('FATTO')
     })
