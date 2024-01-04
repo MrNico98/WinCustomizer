@@ -67,7 +67,7 @@ $inputXML = @"
         <Button Content="Attiva WSA" Name="sottosistema" Height="35" Margin="235,45,35,0" VerticalAlignment="Top" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True"/>
         <Image x:Name="AttivaWSA" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/WSA.png" Margin="232,45,0,0" RenderTransformOrigin="-0.288,1.552" Height="33" Width="41" ScrollViewer.CanContentScroll="False" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Button Content="Edizione Windows" Name="cambiowindows" Margin="235,93,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="EdizioneWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/cambioedizione.png" Margin="229,93,0,0" RenderTransformOrigin="-0.288,1.552" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="34" Height="35" VerticalAlignment="Top"/>
+        <Image x:Name="EdizioneWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/cambioedizione.png" Margin="226,93,0,0" RenderTransformOrigin="-0.288,1.552" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Width="34" Height="35" VerticalAlignment="Top"/>
         <Button Content="Attiva Windows" Name="attivawin" Margin="235,150,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="AttivaWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/maxresdefault.png" Margin="233,154,0,0" RenderTransformOrigin="-0.288,1.552" Width="30" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
         <Button Content="Office" Name="off" Margin="235,198,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
@@ -75,11 +75,11 @@ $inputXML = @"
         <Label Content="Ver.: 5.0" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
         <Label Content="Developer: MrNico98" HorizontalAlignment="Left" Height="30" Margin="2,320,0,0" VerticalAlignment="Top" Width="133"/>
         <Button Content="WinCustomizerTweakst" x:Name="deb" Margin="37,148,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
-        <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="45" Height="43" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="24,140,0,0"/>
+        <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="45" Height="43" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="23,140,0,0"/>
         <Button Content="Copilot" x:Name="cop" Margin="37,196,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="imcopilot" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/1698851956_microsoft-copilot_story.jpg" RenderTransformOrigin="0.5,0.5" Width="30" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,198,0,0"/>
         <Button Content="Attiva WSL" x:Name="wsl" Margin="137,254,133,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="34" VerticalAlignment="Top"/>
-        <Image x:Name="windoswub" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/wsl.png" RenderTransformOrigin="0.5,0.5" Width="57" Height="44" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="125,252,0,0"/>
+        <Image x:Name="windoswub" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/wsl.png" RenderTransformOrigin="0.5,0.5" Width="57" Height="44" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="122,252,0,0"/>
         <TextBlock HorizontalAlignment="Left" Height="30" Margin="129,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Jokerman" FontSize="22" FontWeight="Bold"><Run Language="it-it" Text="WinCustomizer"/></TextBlock>
     </Grid>
 </Window>
@@ -1287,7 +1287,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $resetupdate = New-Object System.Windows.Forms.Button
     $resetupdate.Text = "Resetta Windows Update"
     $resetupdate.AutoSize                 = $True
-    $resetupdate.Location = New-Object System.Drawing.Point(70, 150)
+    $resetupdate.Location = New-Object System.Drawing.Point(70, 180)
     $resetupdate.width            = 100
     $resetupdate.height           = 30
     $resetupdate.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
