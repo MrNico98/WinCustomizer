@@ -29,13 +29,13 @@ Offre la possibilità di attivare il sistema operativo Windows in modo completam
 Offre una serie di opzioni relative a Microsoft Office. Suddivisa in tre sotto-sezioni che permettono di attivare, scaricare o disinstallare Office
 
 # Copilot
-Permette di attivare Microsoft Copilot, la nuova AI di Microsoft su tutti i Windows 10 e Windows 11
+Permette di attivare Microsoft Copilot, la nuova AI di Microsoft su tutte le edizioni di Windows 10 e Windows 11
 
 # WSL
 Permette di attivare il Windows Subsystem Linux
 
 # Per sostenere il progetto
-<a href="https://ko-fi.com/wincustomizer" target="_blank"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftheme.zdassets.com%2Ftheme_assets%2F2141020%2F171bb773b32c4a72bcc2edfee4d01cbc00d8a004.png&f=1&nofb=1&ipt=fe86bcf46af3004f537ae8d8e050a0bb55beec08cc7564f3897c99b1fa43d72e&ipo=images" height="150" width="174"></a>
+<a href="https://ko-fi.com/mrnico98" target="_blank"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftheme.zdassets.com%2Ftheme_assets%2F2141020%2F171bb773b32c4a72bcc2edfee4d01cbc00d8a004.png&f=1&nofb=1&ipt=fe86bcf46af3004f537ae8d8e050a0bb55beec08cc7564f3897c99b1fa43d72e&ipo=images" height="150" width="174"></a>
 
 # Link guida 1: 
 https://www.webassistanceita.com/wincustomizer
