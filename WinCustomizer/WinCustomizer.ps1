@@ -1577,7 +1577,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
    
     $showseconds.Add_Click({
     Log('INIZIO LA PROCEDURA')
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSecondsInSystemClock" -Value 1 -Force
+    cmd.exe /c reg add "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSecondsInSystemClock" /t REG_DWORD /d 1 /f
     True('FINE')
     })
 
@@ -1592,7 +1592,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
    
     $restoresecond.Add_Click({
     Log('INIZIO LA PROCEDURA')
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowSecondsInSystemClock" -Value 0 -Force
+    cmd.exe /c reg add "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSecondsInSystemClock" /t REG_DWORD /d 0 /f
     True('FINE')
     })
 
@@ -2303,8 +2303,9 @@ True('FATTO')
 
   $scruboffice.Add_Click({
   log('Disinstallo office Office')
-  cd "$currentPath\Risorse"
-  start-process -FilePath "WinCustomizerDisinstallaOffice.bat"
+  New-Item -ItemType Directory -Path "Risorse\Bin" | out-null
+  powerShell -ExecutionPolicy Bypass -File "Risorse\dec.ps1"
+  start-process -FilePath "Risorse\WinCustomizerDisinstallaOffice.bat"
   if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerDisinstallaOffice.bat" -PathType Leaf)) {
   Error('Programma non presente')} else {True('FATTO')}
   True('FATTO')
@@ -2316,7 +2317,7 @@ True('FATTO')
 $WPFcop.Add_Click({
  Log('Avvio Copilot Windows')
  cd "$currentPath"
- Start-Process -FilePath ".\Risorse\WinCustomizerCopilot.cmd"
+ Start-Process -FilePath "Risorse\WinCustomizerCopilot.cmd"
  if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerCopilot.cmd" -PathType Leaf)) {
  Error('Programma non presente')} else {True('FATTO')}
  })
