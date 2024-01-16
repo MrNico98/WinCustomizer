@@ -2304,7 +2304,7 @@ True('FATTO')
   $scruboffice.Add_Click({
   log('Disinstallo office Office')
   New-Item -ItemType Directory -Path "Risorse\Bin" | out-null
-  Start-Process powershell.exe -ArgumentList "-NoExit", "-File", "Risorse\dec.ps1"
+  Start-Process powershell.exe -ArgumentList "-NoExit", "-File", "Risorse\dec.ps1" -wait
   start-process -FilePath "Risorse\WinCustomizerDisinstallaOffice.bat"
   if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerDisinstallaOffice.bat" -PathType Leaf)) {
   Error('Programma non presente')} else {True('FATTO')}
