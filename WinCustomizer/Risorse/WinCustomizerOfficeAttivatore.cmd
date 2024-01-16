@@ -77,7 +77,7 @@ popd
 
 cls
 color 07
-title  Ohook Activation
+title  WinCustomizer Attivatore Office
 
 set _args=
 set _elev=
