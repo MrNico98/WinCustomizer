@@ -423,6 +423,12 @@ $ErrorActionPreference           = "SilentlyContinue"
             
         }  
     }
+$registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+$registryName = "dontdisplaylastusername"
+
+# Set the registry value to dword:00000000
+New-ItemProperty -Path $registryPath -Name $registryName -Value 0 -PropertyType DWORD -Force
+
     write-host("Finito. Riavvio il PC tra 20 secondi, attendi.")
 
     shutdown /r /t 20
