@@ -234,6 +234,9 @@ $WPFtips.Add_Click({
      Set-ItemProperty -Path "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 0
      Set-ItemProperty -Path "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 1
      cmd.exe /c sc config wsearch start=auto
+     $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+     $registryName = "dontdisplaylastusername"
+     New-ItemProperty -Path $registryPath -Name $registryName -Value 0 -PropertyType DWORD -Force
      clear
      True('FATTO')
       }
@@ -248,6 +251,9 @@ $WPFtips.Add_Click({
      Set-ItemProperty -Path "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 0
      Set-ItemProperty -Path "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeature"s -Type DWord -Value 1
      cmd.exe /c sc config wsearch start=auto
+     $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+     $registryName = "dontdisplaylastusername"
+     New-ItemProperty -Path $registryPath -Name $registryName -Value 0 -PropertyType DWORD -Force
      clear
      True('FATTO')
       }
