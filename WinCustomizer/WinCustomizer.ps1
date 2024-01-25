@@ -72,7 +72,7 @@ $inputXML = @"
         <Image x:Name="AttivaWindows" SnapsToDevicePixels="True" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/maxresdefault.png" Margin="233,154,0,0" RenderTransformOrigin="-0.288,1.552" Width="30" ScrollViewer.CanContentScroll="False" AllowDrop="True" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top"/>
         <Button Content="Office" Name="off" Margin="235,198,35,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="Office" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/office.png" Margin="236,201,0,0" RenderTransformOrigin="0.5,0.5" Width="29" Height="30" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="Ver.: 5.0" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Content="Ver.: 5.1" HorizontalAlignment="Left" Height="30" Margin="370,320,0,0" VerticalAlignment="Top" Width="62"/>
         <Label Content="Developer: MrNico98" HorizontalAlignment="Left" Height="30" Margin="2,320,0,0" VerticalAlignment="Top" Width="133"/>
         <Button Content="WinCustomizerTweakst" x:Name="deb" Margin="37,148,233,0" Background="White" BorderBrush="White" Foreground="#FFFF0909" Focusable="False" ScrollViewer.CanContentScroll="False" AllowDrop="True" Height="35" VerticalAlignment="Top"/>
         <Image x:Name="debloimage" Source="https://raw.githubusercontent.com/MrNico98/Icone-Wincustomizer/main/Picsart_23-09-22_22-29-23-192.png" RenderTransformOrigin="0.5,0.5" Width="45" Height="43" ScrollViewer.CanContentScroll="True" AllowDrop="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="23,140,0,0"/>
@@ -1695,6 +1695,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     True('FATTO')
     })
     $spostamuovin.ShowDialog()
+  })
 
     $velointernet = New-Object System.Windows.Forms.Button
     $velointernet.Text = "Setta Configurazione Internet"
