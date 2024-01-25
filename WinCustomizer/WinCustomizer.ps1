@@ -1653,6 +1653,49 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $uacform.ShowDialog()
     })
 
+    $spostamuovin = New-Object System.Windows.Forms.Button
+    $spostamuovin.Text = "Sposta/Muovi in"
+    $spostamuovin.AutoSize                 = $True
+    $spostamuovin.Location = New-Object System.Drawing.Point(300, 10)
+    $spostamuovin.width            = 100
+    $spostamuovin.height           = 30
+    $spostamuovin.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $modifiform.Controls.AddRange($spostamuovin)
+
+    $spostamuovin.Add_Click({
+    $spostain = New-Object System.Windows.Forms.Button
+    $spostain.Text = "Sposta/Muovi in.."
+    $spostain.AutoSize                 = $True
+    $spostain.Location = New-Object System.Drawing.Point(70, 10)
+    $spostain.width            = 100
+    $spostain.height           = 30
+    $spostain.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $spostamuovin.Controls.AddRange($spostain)
+
+    $spostain.Add_Click({
+    Log('Abilito Sposta/Mouvi in')
+    cmd.exe /c reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{C2FBB630-2971-11D1-A18C-00C04FD75D13}" /ve /t REG_SZ /d "Copy To" /f
+    cmd.exe /c reg add "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{C2FBB631-2971-11D1-A18C-00C04FD75D13}" /ve /t REG_SZ /d "Move To" /f
+    True('FATTO')
+    })
+
+    $remuspost = New-Object System.Windows.Forms.Button
+    $remuspost.Text = "Rimuovi Sposta/Muovi in"
+    $remuspost.AutoSize                 = $True
+    $remuspost.Location = New-Object System.Drawing.Point(70, 45)
+    $remuspost.width            = 100
+    $remuspost.height           = 30
+    $remuspost.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
+    $spostamuovin.Controls.AddRange($remuspost)
+
+    $remuspost.Add_Click({
+    Log('Disabilito Sposta/Mouvi in')
+    cmd.exe /c reg delete "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{C2FBB630-2971-11D1-A18C-00C04FD75D13}" /f
+    cmd.exe /c reg delete "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{C2FBB631-2971-11D1-A18C-00C04FD75D13}" /f
+    True('FATTO')
+    })
+    $spostamuovin.ShowDialog()
+
     $velointernet = New-Object System.Windows.Forms.Button
     $velointernet.Text = "Setta Configurazione Internet"
     $velointernet.AutoSize                 = $True
