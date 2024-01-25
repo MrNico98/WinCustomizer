@@ -1663,6 +1663,13 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $modifiform.Controls.AddRange($spostamuovin)
 
     $spostamuovin.Add_Click({
+    $spostamuovinform = New-Object System.Windows.Forms.Form
+    $spostamuovinform.Text = "Sposta/Mouvi in"
+    $spostamuovinform.StartPosition              = "CenterScreen"
+    $spostamuovinform.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#ccccff")
+    $spostamuovinform.Size = New-Object System.Drawing.Size(280, 150)
+
+    
     $spostain = New-Object System.Windows.Forms.Button
     $spostain.Text = "Sposta/Muovi in.."
     $spostain.AutoSize                 = $True
@@ -1670,7 +1677,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $spostain.width            = 100
     $spostain.height           = 30
     $spostain.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
-    $spostamuovin.Controls.AddRange($spostain)
+    $spostamuovinform.Controls.AddRange($spostain)
 
     $spostain.Add_Click({
     Log('Abilito Sposta/Mouvi in')
@@ -1686,7 +1693,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $remuspost.width            = 100
     $remuspost.height           = 30
     $remuspost.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
-    $spostamuovin.Controls.AddRange($remuspost)
+    $spostamuovinform.Controls.AddRange($remuspost)
 
     $remuspost.Add_Click({
     Log('Disabilito Sposta/Mouvi in')
@@ -1694,7 +1701,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     cmd.exe /c reg delete "HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\{C2FBB631-2971-11D1-A18C-00C04FD75D13}" /f
     True('FATTO')
     })
-    $spostamuovin.ShowDialog()
+    $spostamuovinform.ShowDialog()
   })
 
     $velointernet = New-Object System.Windows.Forms.Button
