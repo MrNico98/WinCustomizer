@@ -1656,7 +1656,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $spostamuovin = New-Object System.Windows.Forms.Button
     $spostamuovin.Text = "Sposta/Muovi in"
     $spostamuovin.AutoSize                 = $True
-    $spostamuovin.Location = New-Object System.Drawing.Point(300, 10)
+    $spostamuovin.Location = New-Object System.Drawing.Point(300, 40)
     $spostamuovin.width            = 100
     $spostamuovin.height           = 30
     $spostamuovin.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',10)
