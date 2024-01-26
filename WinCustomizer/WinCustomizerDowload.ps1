@@ -5,7 +5,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 }
 
 Remove-Item -Path "$env:USERPROFILE\Desktop\WinCustomizer" -Recurse -Force | out-null
-if (Test-Path -Path "$env:USERPROFILE\Desktop"-PathType Leaf) {Remove-Item -Path "$env:USERPROFILE\OneDrive\Desktop\WinCustomizer" -Recurse -Force} | out-null
+if (Test-Path -Path "$env:USERPROFILE\Desktop"-PathType Leaf) {Remove-Item -Path "$env:USERPROFILE\OneDrive\Desktop\WinCustomizer" -Recurse -Force}
 
 # Change to the desktop directory
 cd "$env:USERPROFILE\Desktop"
