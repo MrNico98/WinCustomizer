@@ -1509,7 +1509,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $rightclickform.Text = "Modifica Tasto Destro"
     $rightclickform.StartPosition              = "CenterScreen"
     $rightclickform.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#ccccff")
-    $rightclickform.Size = New-Object System.Drawing.Size(290, 150)
+    $rightclickform.Size = New-Object System.Drawing.Size(290, 200)
 
     $rightclickfull = New-Object System.Windows.Forms.Button
     $rightclickfull.Text = "Abilita tasto destro completo"
@@ -1525,7 +1525,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     systeminfo | find "Windows 10"
      if ($?) {Error "Funzione abilitata solo per Windows 11"}
      else {
-    cmd.exe /c reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /f /ve
+    cmd.exe /c "reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /ve /d /f"
     Stop-Process -Name explorer -Force
     Start-Process explorer
     True('FATTO')
@@ -1546,7 +1546,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
      if ($?) {Error "Funzione abilitata solo per Windows 11"}
      else {
     Log('Ripristino il tasto destro del mouse')
-    cmd.exe /c reg delete HKCU\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2} /f
+    cmd.exe /c "reg delete HKCU\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2} /f"
     Stop-Process -Name explorer -Force
     Start-Process explorer
     True('FATTO')
