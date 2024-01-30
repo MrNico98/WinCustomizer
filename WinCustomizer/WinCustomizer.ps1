@@ -2098,7 +2098,7 @@ $WPFoff.Add_Click({
     Remove-Item -Path "Office2021-main.zip" -Recurse -Force
     mkdir "$currentPath\Office2021\configuration"
     Copy-Item "Risorse\configuration-x32-complete.xml" -Destination "Office2021\configuration\configuration-x32-complete.xml" -Force 
-    Start-Process -FilePath ".\Office2021\Install-x32-complete.bat" -Wait
+    Start-Process -FilePath ".\Office2021\Install-x32-basic.bat" -Wait
     Remove-Item -Path "$currentPath\Office2021" -Recurse -Force
     True('FATTO')
     })
@@ -2323,7 +2323,7 @@ Remove-Item -Path "Office2021-main" -Recurse -Force
 Remove-Item -Path "Office2021-main.zip" -Recurse -Force
 mkdir "$currentPath\Office2021\configuration"
 Move-Item -Path "C:\configuration-x32-complete.xml" -Destination "$currentPath\Office2021\configuration" -Force
-Start-Process -FilePath ".\Office2021\Install-x32-complete.bat" -Wait
+Start-Process -FilePath ".\Office2021\Install-x64-basic.bat" -Wait
 Remove-Item -Path "$currentPath\Office2021" -Recurse -Force
 True('FATTO')
     })
