@@ -1268,8 +1268,10 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     Stop-Service -Name wuauserv
     Start-Process -FilePath "DISM.exe" -ArgumentList "/Online /Cleanup-Image /StartComponentCleanup /ResetBase" -Wait
     Start-Process -Wait -FilePath "cleanmgr.exe" -ArgumentList "/sagerun:1"
-    Start-Sleep -Seconds 10
-    Start-Sleep -Seconds 10
+    Start-Sleep 10
+    Start-Sleep 10
+    Remove-Item -Path "C:\Windows\SoftwareDistribution\Download" -Recurse -Force
+    Start-Service -Name wuauserv
     True('FATTO')
     })
 
@@ -1300,7 +1302,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
     $ripristinoForm.Controls.AddRange($resetupdate)
 
     $resetupdate.Add_Click({
-    Log('Avvio pulizia cronologia Windows Defender')
+    Log('Avvio Resetta Windows Update')
     Stop-Service -Name bits, wuauserv, cryptsvc
     Remove-Item -Path "$env:SystemRoot\System32\Catroot2" -Force -Recurse
     Start-Service -Name cryptsvc
