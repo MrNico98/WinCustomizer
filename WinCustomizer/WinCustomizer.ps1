@@ -1403,7 +1403,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
 
     $resetsxs.Add_Click({  
     Log('Avvio ripristino cartella WinSxS')
-     Start-Process -FilePath "DISM.exe" -ArgumentList "/Online /Cleanup-Image /StartComponentCleanup" -Wait*
+     Start-Process -FilePath "DISM.exe" -ArgumentList "/Online /Cleanup-Image /StartComponentCleanup"
      True('FINE')
     })
     
