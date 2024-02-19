@@ -2364,8 +2364,8 @@ True('FATTO')
   log('Disinstallo office Office')
   New-Item -ItemType Directory -Path "Risorse\Bin" | out-null
   Start-Process powershell.exe -ArgumentList "-NoExit", "-File", "Risorse\dec.ps1" -wait
-  start-process -FilePath "Risorse\WinCustomizerDisinstallaOffice.bat"
-  if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerDisinstallaOffice.bat" -PathType Leaf)) {
+  start-process -FilePath "Risorse\WinCustomizerDisinstallaOffice.cmd"
+  if (-not (Test-Path -Path "$currentPath\Risorse\WinCustomizerDisinstallaOffice.cmd" -PathType Leaf)) {
   Error('Programma non presente')} else {True('FATTO')}
   True('FATTO')
   })
