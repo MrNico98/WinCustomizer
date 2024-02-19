@@ -465,7 +465,8 @@ IF %errorlevel% equ 0 (
 :: Enable QuickEdit Mode
 reg add HKCU\Console /v QuickEdit /t REG_DWORD /d 1 /f
 
-powerShell -Command "Write-Host 'Processo completato troverari la tua ISO in C:! -ForegroundColor Green; exit"  
+powerShell -Command "Write-Host 'Processo completato troverari la tua ISO in C:! -ForegroundColor Green; exit"
+timeout 5
 endlocal
 
 ::##################################################################################################################################################
