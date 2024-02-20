@@ -1,10 +1,26 @@
 @setlocal DisableDelayedExpansion
 @echo off
 
+
+
+::============================================================================
+::
+::  
+::
+:: 
+::      
+::
+::============================================================================
+
+
+
+::  To activate Office with Ohook activation, run the script with "/Ohook" parameter or change 0 to 1 in below line
 set _act=1
 
-
+::  To remove Ohook activation, run the script with /Ohook-Uninstall parameter or change 0 to 1 in below line
 set _rem=0
+
+::  If value is changed in above lines or parameter is used then script will run in unattended mode
 
 
 
@@ -54,19 +70,31 @@ echo:
 echo Null service is not running, script may crash...
 echo:
 echo:
+echo Troubleshoot.html
 echo:
 echo:
 ping 127.0.0.1 -n 10
 )
 cls
 
+::  Check LF line ending
 
+pushd "%~dp0"
+>nul findstr /v "$" "%~nx0" && (
+echo:
+echo Error: Script either has LF line ending issue or an empty line at the end of the script is missing.
+echo:
+ping 127.0.0.1 -n 6 >nul
+popd
+exit /b
+)
+popd
 
 ::========================================================================================================================================
 
 cls
 color 07
-title  WinCustomizer Attivatore Office
+title  WinCustomizer Attivazione Ohook
 
 set _args=
 set _elev=
@@ -122,10 +150,10 @@ set "nceline=echo: &echo ==== ERROR ==== &echo:"
 set "eline=echo: &call :dk_color %Red% "==== ERROR ====" &echo:"
 if %~z0 GEQ 200000 (
 set "_exitmsg=Go back"
-set "_fixmsg=Go back to Main Menu, select Troubleshoot and run Fix Licensing option."
+set "_fixmsg=Troubleshoot and run Fix Licensing option."
 ) else (
 set "_exitmsg=Exit"
-set "_fixmsg=Run Troubleshoot script and select Fix Licensing option."
+set "_fixmsg=Troubleshoot script and select Fix Licensing option."
 )
 
 ::========================================================================================================================================
@@ -205,6 +233,11 @@ if %_rem%==1 goto :oh_uninstall
 
 :oh_menu
 
+if %_unattended%==0 (
+  goto :oh_menu2
+
+)
+
 ::========================================================================================================================================
 
 :oh_menu2
@@ -213,7 +246,7 @@ cls
 mode 130, 32
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=32;$B.Height=300;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 
-title  Ohook Activation
+title  WinCustomizer Attivazione Ohook
 
 echo:
 echo Initializing...
@@ -227,6 +260,7 @@ echo:
 echo PowerShell is not working. Aborting...
 echo If you have applied restrictions on Powershell then undo those changes.
 echo:
+echo Troubleshoot
 goto dk_done
 )
 
@@ -338,6 +372,7 @@ echo You have only Office dashboard app installed, you need to install full Offi
 echo:
 call :dk_color %Blue% "Download and install Office from below URL and try again."
 echo:
+echo.
 goto dk_done
 )
 
@@ -491,6 +526,7 @@ echo Adding Reg Keys To Skip License Check   [Successful]
 
 ::========================================================================================================================================
 
+::  
 ::  Add registry keys for volume products so that 'non-genuine' banner won't appear 
 ::  Script already is using MAK instead of GVLK so it won't appear anyway, but registry keys are added incase Office installs default GVLK grace key for volume products
 
@@ -553,11 +589,96 @@ if !errorlevel! NEQ 0 cscript //nologo %windir%\system32\slmgr.vbs /rilc %nul%
 
 echo:
 if not defined error (
-call :dk_color %Green% "Office attivato permanentemente."
+call :dk_color %Green% "Office is permanently activated."
+echo WinCustomizer
 ) else (
 call :dk_color %Red% "Some errors were detected."
 if not defined ierror if not defined showfix if not defined serv_cor if not defined serv_cste call :dk_color %Blue% "%_fixmsg%"
+echo:
+call :dk_color2 %Blue% "Help" %_Yellow% " Troubleshoot"
 )
+
+goto :dk_done
+
+::========================================================================================================================================
+
+:oh_uninstall
+
+cls
+mode 99, 28
+title  Uninstall Ohook Activation
+
+set _present=
+set _unerror=
+call :oh_reset
+call :oh_getpath
+
+echo:
+echo Uninstalling Ohook Activation...
+echo:
+
+if defined o16c2r_reg (for /f "skip=2 tokens=2*" %%a in ('"reg query %o16c2r_reg% /v InstallPath" %nul6%') do (set "_16CHook=%%b\root\vfs"))
+if defined o15c2r_reg (for /f "skip=2 tokens=2*" %%a in ('"reg query %o15c2r_reg% /v InstallPath" %nul6%') do (set "_15CHook=%%b\root\vfs"))
+if defined o16msi_reg (for /f "skip=2 tokens=2*" %%a in ('"reg query %o16msi_reg%\Common\InstallRoot /v Path" %nul6%') do (set "_16MHook=%%b"))
+if defined o15msi_reg (for /f "skip=2 tokens=2*" %%a in ('"reg query %o15msi_reg%\Common\InstallRoot /v Path" %nul6%') do (set "_15MHook=%%b"))
+
+if defined _16CHook (if exist "%_16CHook%\System\sppc*dll"    (set _present=1& del /s /f /q "%_16CHook%\System\sppc*dll"    & if exist "%_16CHook%\System\sppc*dll"    set _unerror=1))
+if defined _16CHook (if exist "%_16CHook%\SystemX86\sppc*dll" (set _present=1& del /s /f /q "%_16CHook%\SystemX86\sppc*dll" & if exist "%_16CHook%\SystemX86\sppc*dll" set _unerror=1))
+if defined _15CHook (if exist "%_15CHook%\System\sppc*dll"    (set _present=1& del /s /f /q "%_15CHook%\System\sppc*dll"    & if exist "%_15CHook%\System\sppc*dll"    set _unerror=1))
+if defined _15CHook (if exist "%_15CHook%\SystemX86\sppc*dll" (set _present=1& del /s /f /q "%_15CHook%\SystemX86\sppc*dll" & if exist "%_15CHook%\SystemX86\sppc*dll" set _unerror=1))
+if defined _16MHook (if exist "%_16MHook%sppc*dll"            (set _present=1& del /s /f /q "%_16MHook%sppc*dll"            & if exist "%_16MHook%sppc*dll"            set _unerror=1))
+if defined _15MHook (if exist "%_15MHook%sppc*dll"            (set _present=1& del /s /f /q "%_15MHook%sppc*dll"            & if exist "%_15MHook%sppc*dll"            set _unerror=1))
+
+for %%# in (15 16) do (
+for %%A in ("%ProgramFiles%" "%ProgramW6432%" "%ProgramFiles(x86)%") do (
+if exist "%%~A\Microsoft Office\Office%%#\sppc*dll" (set _present=1& del /s /f /q "%%~A\Microsoft Office\Office%%#\sppc*dll" & if exist "%%~A\Microsoft Office\Office%%#\sppc*dll" set _unerror=1)
+)
+)
+
+for %%# in (System SystemX86) do (
+for %%G in ("Office 15" "Office") do (
+for %%A in ("%ProgramFiles%" "%ProgramW6432%" "%ProgramFiles(x86)%") do (
+if exist "%%~A\Microsoft %%~G\root\vfs\%%#\sppc*dll" (set _present=1& del /s /f /q "%%~A\Microsoft %%~G\root\vfs\%%#\sppc*dll" & if exist "%%~A\Microsoft %%~G\root\vfs\%%#\sppc*dll" set _unerror=1)
+)
+)
+)
+
+reg query HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency %nul% && (
+echo:
+echo Deleting - Registry keys to skip license check
+reg delete HKCU\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency /f
+
+for /f "tokens=* delims=" %%a in ('%psc% "Get-ChildItem -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList' | ForEach-Object { Split-Path -Path $_.PSPath -Leaf }" %nul6%') do (if defined _sid (set "_sid=!_sid! %%a") else (set "_sid=%%a"))
+for %%# in (!_sid!) do (reg query HKU\%%#\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency %nul% && (
+reg delete HKU\%%#\Software\Microsoft\Office\16.0\Common\Licensing\Resiliency /f
+)
+)
+)
+
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" %nul% && (
+echo:
+echo Deleting - Registry keys to prevent non-genuine banner
+reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" /f
+)
+
+reg query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" %nul% && (
+reg delete "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\0ff1ce15-a989-479d-af46-f275c6370663" /f
+)
+
+echo __________________________________________________________________________________________
+echo:
+
+if not defined _present (
+echo Ohook Activation is not installed.
+) else (
+if defined _unerror (
+call :dk_color %Red% "Failed to uninstall Ohook activation."
+call :dk_color %Blue% "Close Office apps if they are running and try again."
+) else (
+call :dk_color %Green% "Successfully uninstalled Ohook activation."
+)
+)
+echo __________________________________________________________________________________________
 
 goto :dk_done
 
@@ -1095,7 +1216,7 @@ echo "%error_code%" | findstr /i "0x800410 0x800440" %nul1% && set wmifailed=1& 
 if defined wmifailed (
 set error=1
 call :dk_color %Red% "Checking WMI                            [Not Responding]"
-call :dk_color %Blue% "Goto Troubleshoot and run Fix WMI option."
+call :dk_color %Blue% "Troubleshoot and run Fix WMI option."
 set showfix=1
 )
 
@@ -1131,7 +1252,7 @@ set error=1
 
 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Plugins\Objects\msft:rm/algorithm/hwid/4.0" /f ba02fed39662 /d %nul% || (
 call :dk_color %Red% "Checking SPP Registry Key               [Incorrect ModuleId Found]"
-call :dk_color %Blue% "Possibly Caused By Gaming Spoofers. Help: troubleshoot"
+call :dk_color %Blue% "Troubleshoot"
 set error=1
 set showfix=1
 )
@@ -1276,8 +1397,8 @@ exit /b
 :dk_done
 
 echo:
-if %_unattended%==1 timeout /t 2 & exit /b
-call :dk_color %_Yellow% "Press any key to %_exitmsg%..."
+if %_unattended%==1 timeout /t 2
+call :dk_color %_Yellow% "Premi un tasto per uscire..."
 pause %nul1%
 exit /b
 
@@ -1574,12 +1695,15 @@ $MemoryStream.Close()
 ::  e6ac83560c19ec7eb868c50ea97ea0ed5632a397a9f43c17e24e6de4a694d118 *sppc32.dll
 ::  c6df24deef2e83813dee9c81ddd9793a3d60c117a4e8e231b82e32b3192927e7 *sppc64.dll
 ::
-
+::  
+::
+::  
 ::  Here you can find the files source code and info on how to rebuild the identical sppc.dll files
 ::
 ::  stackoverflow.com/a/35335273
 ::  Here you can check how to extract sppc.dll files from base64
 ::
+::  
 ::
 ::========================================================================================================================================
 
