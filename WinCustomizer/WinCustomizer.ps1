@@ -1585,7 +1585,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
    
     $showseconds.Add_Click({
     Log('INIZIO LA PROCEDURA')
-    cmd.exe /c reg add "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSecondsInSystemClock" /t REG_DWORD /d 1 /f
+    powershell.exe Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name ShowSecondsInSystemClock -Value 1 -Force
     True('FINE')
     })
 
@@ -1600,7 +1600,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
    
     $restoresecond.Add_Click({
     Log('INIZIO LA PROCEDURA')
-    cmd.exe /c reg add "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSecondsInSystemClock" /t REG_DWORD /d 0 /f
+    powershell.exe Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name ShowSecondsInSystemClock -Value 0 -Force
     True('FINE')
     })
 
