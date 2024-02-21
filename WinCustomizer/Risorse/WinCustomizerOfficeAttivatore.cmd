@@ -77,19 +77,6 @@ ping 127.0.0.1 -n 10
 )
 cls
 
-::  Check LF line ending
-
-pushd "%~dp0"
->nul findstr /v "$" "%~nx0" && (
-echo:
-echo Error: Script either has LF line ending issue or an empty line at the end of the script is missing.
-echo:
-ping 127.0.0.1 -n 6 >nul
-popd
-exit /b
-)
-popd
-
 ::========================================================================================================================================
 
 cls
