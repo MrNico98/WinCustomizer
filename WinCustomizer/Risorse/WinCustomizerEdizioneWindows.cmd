@@ -2,6 +2,18 @@
 @echo off
 
 
+
+::============================================================================
+::
+::   
+::
+::   
+::     
+::
+::============================================================================
+
+
+
 ::  To stage current edition while changing edition with CBS Upgrade Method, change 0 to 1 in below line
 set _stg=0
 
@@ -45,9 +57,6 @@ exit /b
 
 ::========================================================================================================================================
 
-set "blank="
-set "mas=ht%blank%tps%blank%://mass%blank%grave.dev/"
-
 ::  Check if Null service is working, it's important for the batch script
 
 sc query Null | find /i "RUNNING"
@@ -56,18 +65,19 @@ echo:
 echo Null service is not running, script may crash...
 echo:
 echo:
-echo Help - %mas%troubleshoot.html
+echo Troubleshoot.html
 echo:
 echo:
 ping 127.0.0.1 -n 10
 )
 cls
 
+
 ::========================================================================================================================================
 
 cls
 color 07
-title  WinCustomizer Cambio Edizione Windows
+title  Change WinCustomizer Cambio Edizione Windows
 
 set _args=
 set _elev=
@@ -134,7 +144,7 @@ goto ced_done
 
 ::========================================================================================================================================
 
-::  Fix for the special characters limitation in path name
+::  Fix special characters limitation in path name
 
 set "_work=%~dp0"
 if "%_work:~-1%"=="\" set "_work=%_work:~0,-1%"
@@ -168,9 +178,23 @@ goto ced_done
 %nul1% fltmc || (
 if not defined _elev %psc% "start cmd.exe -arg '/c \"!_PSarg:'=''!\"' -verb runas" && exit /b
 %eline%
-echo This script requires admin privileges.
+echo This script needs admin rights.
 echo To do so, right click on this script and select 'Run as administrator'.
 goto ced_done
+)
+
+::========================================================================================================================================
+
+::  This code disables QuickEdit for this cmd.exe session only without making permanent changes to the registry
+::  It is added because clicking on the script window pauses the operation and leads to the confusion that script stopped due to an error
+
+for %%# in (%_args%) do (if /i "%%#"=="-qedit" set quedit=1)
+
+reg query HKCU\Console /v QuickEdit %nul2% | find /i "0x0" %nul1% || if not defined quedit (
+reg add HKCU\Console /v QuickEdit /t REG_DWORD /d "0" /f %nul1%
+start cmd.exe /c ""!_batf!" %_args% -qedit"
+rem quickedit reset code is added at the starting of the script instead of here because it takes time to reflect in some cases
+exit /b
 )
 
 ::========================================================================================================================================
@@ -179,7 +203,7 @@ cls
 mode 98, 30
 
 echo:
-echo Iniziamo...
+echo Initializing...
 echo:
 call :dk_product
 call :dk_ckeckwmic
@@ -209,7 +233,7 @@ if not defined applist (
 %eline%
 echo Activation IDs not found. Aborting...
 echo:
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 goto ced_done
 )
 )
@@ -258,7 +282,7 @@ cmd /c exit /b !errorlevel!
 echo DISM command failed [Error Code - 0x!=ExitCode!]
 echo OS Edition was not detected properly. Aborting...
 echo:
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 goto ced_done
 )
 
@@ -276,7 +300,7 @@ echo:
 echo PowerShell is not working. Aborting...
 echo If you have applied restrictions on Powershell then undo those changes.
 echo:
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 goto ced_done
 )
 
@@ -344,7 +368,7 @@ set targetedition=
 
 %line%
 echo:
-call :dk_color %Gray% "Puoi cambiare la tua edizione [%osedition%] [%winbuild%] con una delle seguenti."
+call :dk_color %Gray% "You can change the Edition [%osedition%] [%winbuild%] to one of the following."
 if defined dismnotworking (
 call :dk_color %_Yellow% "Note - DISM.exe is not responding."
 if /i "%osedition:~0,4%"=="Core" call :dk_color %_Yellow% "     - You will see more edition options to choose once its changed to Pro."
@@ -362,7 +386,7 @@ set targetedition!counter!=%%A
 echo:
 echo [0]  %_exitmsg%
 echo:
-call :dk_color %_Green% "Digita un numero, poi premi "Invio":"
+call :dk_color %_Green% "Enter option number in keyboard, and press "Enter":"
 set /p inpt=
 if "%inpt%"=="" goto cedmenu2
 if "%inpt%"=="0" exit /b
@@ -400,7 +424,7 @@ if not defined key (
 echo [%targetedition% ^| %winbuild%]
 echo Unable to get product key from pkeyhelper.dll
 echo:
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 goto ced_done
 )
 
@@ -459,7 +483,7 @@ echo:
 call :dk_color %Gray% "Reboot is required to properly change the Edition."
 ) else (
 call :dk_color %Red% "[Unsuccessful] [Error Code: 0x!=ExitCode!]"
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 )
 )
 
@@ -469,9 +493,7 @@ echo Applying the DISM API method with %_chan% Key %key%. Please wait...
 echo:
 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':dismapi\:.*';& ([ScriptBlock]::Create($f[1])) %targetedition% %key%;"
 timeout /t 3 %nul1%
-echo:
-call :dk_color %Blue% "Incase of errors, you must restart your system before trying again."
-echo Check this page for help. %mas%troubleshoot
+echo.
 )
 %line%
 
@@ -485,13 +507,13 @@ cls
 mode con cols=105 lines=32
 %psc% "&{$W=$Host.UI.RawUI.WindowSize;$B=$Host.UI.RawUI.BufferSize;$W.Height=31;$B.Height=200;$Host.UI.RawUI.WindowSize=$W;$Host.UI.RawUI.BufferSize=$B;}"
 
-%psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':checkrebootflag\:.*';iex ($f[1]);" | find /i "True" %nul% && (
-%eline%
-echo Pending reboot flags found.
-echo:
-echo Restart the system and try again.
-goto ced_done
-)
+REM %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':checkrebootflag\:.*';iex ($f[1]);" | find /i "True" %nul% && (
+REM %eline%
+REM echo Pending reboot flags found.
+REM echo:
+REM echo Restart the system and try again.
+REM goto ced_done
+REM )
 
 echo:
 if defined dismnotworking call :dk_color %_Yellow% "Note - DISM.exe is not responding."
@@ -510,7 +532,7 @@ if %_stg%==0 (set stage=) else (set stage=-StageCurrent)
 %psc% "$f=[io.file]::ReadAllText('!_batp!') -split ':cbsxml\:.*';& ([ScriptBlock]::Create($f[1])) -SetEdition %targetedition% %stage%;"
 echo:
 call :dk_color %Blue% "Incase of errors, you must restart your system before trying again."
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 %line%
 
 goto ced_done
@@ -537,7 +559,7 @@ if not defined key (
 echo [%targetedition% ^| %winbuild%]
 echo Unable to get product key from pkeyhelper.dll
 echo:
-echo Check this page for help. %mas%troubleshoot
+echo Troubleshoot
 goto ced_done
 )
 
@@ -561,7 +583,7 @@ echo DISM /online /Set-Edition:%targetedition% /ProductKey:%key% /AcceptEula
 DISM /online /Set-Edition:%targetedition% /ProductKey:%key% /AcceptEula
 
 call :dk_color %Blue% "You must restart the system at this stage."
-echo Help: %mas%troubleshoot
+echo Troubleshoot
 
 ::========================================================================================================================================
 
@@ -676,8 +698,8 @@ exit /b
 function Test-PendingReboot
 {
  if (Test-Path -Path "$env:windir\WinSxS\pending.xml") { return $true }
- if (Get-ChildItem "HKLM:\Software\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending" -EA Ignore) { return $true }
- if (Get-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" -EA Ignore) { return $true }
+ if (Get-ChildItem "HKLM:\Software\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending" -EA SilentlyContinue) { return $true }
+ if (Get-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" -EA SilentlyContinue) { return $true }
  try { 
    $util = [wmiclass]"\\.\root\ccm\clientsdk:CCM_ClientUtilities"
    $status = $util.DetermineIfRebootPending()
@@ -775,6 +797,8 @@ echo %esc%[%~1%~2%esc%[%~3%~4%esc%[0m
 exit /b
 
 ::========================================================================================================================================
+
+::  https://github.com/Gamers-Against-Weed/Set-WindowsCbsEdition
 
 :cbsxml:[
 param (
