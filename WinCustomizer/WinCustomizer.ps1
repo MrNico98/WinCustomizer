@@ -1234,7 +1234,7 @@ Risorse\PowerRun.exe cmd.exe /c "reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentContr
 
     $bios.Add_Click({
     Log('Inizio la procedura')
-    shutdown /r /o /f /t 00
+    shutdown /t 0 /r /fw
     True('FATTO')
     })
 
