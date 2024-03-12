@@ -32,7 +32,7 @@ echo.     [1] si
 echo.     [2] No
 echo. ===============================
 set /p answer="Seleziona Numero: "
-if /i "%answer%"=="1" ( start "" "https://mega.nz/file/WuIQiDBC#o8D_3oCHn_h5Nz4L3O59l4gKwPp_xYIuePr3Lw52h2o" goto :attesaiso1 )
+if /i "%answer%"=="1" ( start "" "https://devuploads.com/2sumx986haqs" goto :attesaiso1 )
 if /i "%answer%"=="2" ( goto :cartellaISO1 )
 else ( echo ATTENZIONE! I valori accettati sono solamente '1' '2'.)
 
