@@ -33,7 +33,7 @@ echo.        [1] SI
 echo.        [2] NO
 echo. ================================
 set /p answer="Seleziona Numero: "
-if /i "%answer%"=="1" ( start "" "https://devuploads.com/2sumx986haqs" goto :attesaiso )
+if /i "%answer%"=="1" ( start "" "https://www.microsoft.com/it-it/software-download/windows11" goto :attesaiso )
 if /i "%answer%"=="2" ( goto :cartellaISO )
 else ( echo ATTENZIONE! I valori accettati sono solamente '1' '2' )
 
