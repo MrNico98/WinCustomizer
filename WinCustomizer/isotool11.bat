@@ -343,14 +343,6 @@ IF %errorlevel% equ 0 (
   color 4 && echo "Impossibile copiare tweaks.bat!" && pause && del "Risorse\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
 )
 
-rem copy debloater
-cls
-copy "Risorse\WinCustomizerDebloat3.0.ps1" "C:\mount\mount\Windows"
-IF %errorlevel% equ 0 (
-  powerShell -Command "Write-Host 'WinCustomizerDebloat3.0 copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
-) ELSE (
-  color 4 && echo "Impossibile copiare WinCustomizerDebloat3.0.ps1!" && pause && del "Risorse\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
-)
 
 rem copy start.ps1
 cls
@@ -393,13 +385,7 @@ IF %errorlevel% equ 0 (
   color 4 && echo "Impossibile copiare main.ps1!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
 )
 
-rem copy Start Debloat
-copy "Risorse\WinCustomizerStartDebloat.bat" "C:\mount\mount\Windows"
-IF %errorlevel% equ 0 (
-  powerShell -Command "Write-Host 'WinCustomizerStartDebloat.bat copiato con successo!' -ForegroundColor 7; exit" && timeout 04 >nul && cls
-) ELSE (
-  color 4 && echo "Impossibile copiare WinCustomizerStartDebloat.bat!" && pause && del "resources\unattend_edited.xml" /q && rmdir "C:\mount" /s /q && rmdir "C:\ISO" /s /q && exit /b 1
-)
+
 
 goto :menuprincipale
 

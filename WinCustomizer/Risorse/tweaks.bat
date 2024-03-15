@@ -70,8 +70,7 @@ sc config dmwappushservice start=disabled
 rem copy Attivatore Win
 copy "C:\Windows\WinCustomizerAttivatore.bat" "C:\Users\%username%\Desktop"
 
-rem copy debloater shortcut
-copy "C:\Windows\WinCustomizerStartDebloat.bat" "C:\Users\%username%\Desktop"
+
 
 rem disable widgets
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarDa /t REG_DWORD /d 0 /f
