@@ -1,3 +1,1 @@
-Non più aggiornato
-
-Utilizzare WinHubX
+Use WinHubX
